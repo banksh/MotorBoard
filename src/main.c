@@ -68,12 +68,41 @@ int main(void)
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 
   /* Configure PC8 and PC9 in output pushpull mode */
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_11 | GPIO_Pin_15 | GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_10 | GPIO_Pin_5;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
   GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
   GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_4 | GPIO_Pin_8 | GPIO_Pin_3 | GPIO_Pin_5;
+  GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7;
+  GPIO_Init(GPIOF, &GPIO_InitStructure);
+
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+  GPIO_Init(GPIOF, &GPIO_InitStructure);
+
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
+  GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+  GPIO_SetBits(GPIOB, GPIO_Pin_8);
+
+  // 1/32 microstepping
+  GPIO_SetBits(GPIOA, GPIO_Pin_15);
+  GPIO_SetBits(GPIOA, GPIO_Pin_8);
+  GPIO_SetBits(GPIOA, GPIO_Pin_9);
+  GPIO_SetBits(GPIOA, GPIO_Pin_10);
+  GPIO_SetBits(GPIOB, GPIO_Pin_3);
+  GPIO_SetBits(GPIOF, GPIO_Pin_7);
+
+  uint16_t Z_Fault = 0;
+  uint16_t XY_Fault = 0;
+
+  uint16_t i = 0;
 
   /* To achieve GPIO toggling maximum frequency, the following  sequence is mandatory. 
      You can monitor PC8 and PC9 on the scope to measure the output signal. 
@@ -82,13 +111,37 @@ int main(void)
      This code needs to be compiled with high speed optimization option.  */
   while (1)
   {
+    Z_Fault = ~GPIO_ReadInputDataBit(GPIOF, GPIO_Pin_6);
     /* Set PC8 and PC9 */
-    GPIO_SetBits(GPIOA, GPIO_Pin_0);
-	delay(500000);
+    if (XY_Fault){
+        GPIO_SetBits(GPIOA, GPIO_Pin_0);
+    }
+    GPIO_SetBits(GPIOA, GPIO_Pin_11);
+    GPIO_SetBits(GPIOB, GPIO_Pin_13);
+    GPIO_SetBits(GPIOB, GPIO_Pin_4);
+    delay(100);
+	//delay(500000);
 	/* Reset PC8 and PC9 */
-    GPIO_ResetBits(GPIOA, GPIO_Pin_0);
-	delay(500000);
-   
+    if (XY_Fault==0){
+        GPIO_ResetBits(GPIOA, GPIO_Pin_0);
+    }
+    GPIO_ResetBits(GPIOA, GPIO_Pin_11);
+    GPIO_ResetBits(GPIOB, GPIO_Pin_13);
+    GPIO_ResetBits(GPIOB, GPIO_Pin_4);
+    delay(100);
+	//delay(500000);
+    i++;
+    if (i>=3200){
+        GPIO_SetBits(GPIOA, GPIO_Pin_12);
+        GPIO_SetBits(GPIOB, GPIO_Pin_5);
+    }
+    else {
+        GPIO_ResetBits(GPIOA, GPIO_Pin_12);
+        GPIO_ResetBits(GPIOB, GPIO_Pin_5);
+    }
+    if (i>6400){
+        i = 0;
+    }
 
     
   }

@@ -18,7 +18,7 @@ GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP ;
 GPIO_Init(GPIOB, &GPIO_InitStructure);
 
 GPIO_PinAFConfig(GPIOB, GPIO_PinSource9, GPIO_AF_2);
-GPIO_PinAFConfig(GPIOB, GPIO_PinSource9, GPIO_AF_2);
+GPIO_PinAFConfig(GPIOB, GPIO_PinSource15, GPIO_AF_2);
 }
 
 void PWM_Config(void)
