@@ -1,0 +1,2010 @@
+ARM GAS  /tmp/ccBphW2A.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1	@ Tag_ABI_FP_denormal
+   4              		.eabi_attribute 21, 1	@ Tag_ABI_FP_exceptions
+   5              		.eabi_attribute 23, 3	@ Tag_ABI_FP_number_model
+   6              		.eabi_attribute 24, 1	@ Tag_ABI_align8_needed
+   7              		.eabi_attribute 25, 1	@ Tag_ABI_align8_preserved
+   8              		.eabi_attribute 26, 1	@ Tag_ABI_enum_size
+   9              		.eabi_attribute 30, 4	@ Tag_ABI_optimization_goals
+  10              		.eabi_attribute 34, 0	@ Tag_CPU_unaligned_access
+  11              		.eabi_attribute 18, 4	@ Tag_ABI_PCS_wchar_t
+  12              		.file	"system_stm32f0xx.c"
+  13              	@ GNU C (GNU Tools for ARM Embedded Processors) version 4.8.4 20140725 (release) [ARM/embedded-4_8-
+  14              	@	compiled by GNU C version 4.6.3, GMP version 5.0.2, MPFR version 3.1.0-p3, MPC version 0.9
+  15              	@ warning: GMP header version 5.0.2 differs from library version 5.1.3.
+  16              	@ warning: MPFR header version 3.1.0-p3 differs from library version 3.1.2-p3.
+  17              	@ GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+  18              	@ options passed:  -I .
+  19              	@ -I ../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Include
+  20              	@ -I ../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/Include
+  21              	@ -I ../../STM32F0-Discovery_FW_V1.0.0/Libraries/STM32F0xx_StdPeriph_Driver/inc
+  22              	@ -I ../../STM32F0-Discovery_FW_V1.0.0/Utilities/STM32F0-Discovery -I ./inc
+  23              	@ -imultilib armv6-m -iprefix /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/
+  24              	@ -isysroot /usr/bin/../arm-none-eabi -D__USES_INITFINI__ -D STM32F0XX
+  25              	@ -D USE_STDPERIPH_DRIVER -D RUN_FROM_FLASH=1
+  26              	@ ../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.
+  27              	@ -mcpu=cortex-m0 -mthumb
+  28              	@ -auxbase-strip ../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/sy
+  29              	@ -g -gdwarf-2 -Os -Wall -Wstrict-prototypes -fomit-frame-pointer
+  30              	@ -fverbose-asm
+  31              	@ options enabled:  -faggressive-loop-optimizations -fauto-inc-dec
+  32              	@ -fbranch-count-reg -fcaller-saves -fcombine-stack-adjustments -fcommon
+  33              	@ -fcompare-elim -fcprop-registers -fcrossjumping -fcse-follow-jumps
+  34              	@ -fdefer-pop -fdelete-null-pointer-checks -fdevirtualize -fdwarf2-cfi-asm
+  35              	@ -fearly-inlining -feliminate-unused-debug-types -fexpensive-optimizations
+  36              	@ -fforward-propagate -ffunction-cse -fgcse -fgcse-lm -fgnu-runtime
+  37              	@ -fgnu-unique -fguess-branch-probability -fhoist-adjacent-loads -fident
+  38              	@ -fif-conversion -fif-conversion2 -findirect-inlining -finline
+  39              	@ -finline-atomics -finline-functions -finline-functions-called-once
+  40              	@ -finline-small-functions -fipa-cp -fipa-profile -fipa-pure-const
+  41              	@ -fipa-reference -fipa-sra -fira-hoist-pressure -fira-share-save-slots
+  42              	@ -fira-share-spill-slots -fivopts -fkeep-static-consts
+  43              	@ -fleading-underscore -fmath-errno -fmerge-constants -fmerge-debug-strings
+  44              	@ -fomit-frame-pointer -foptimize-register-move -foptimize-sibling-calls
+  45              	@ -fpartial-inlining -fpeephole -fpeephole2 -fprefetch-loop-arrays
+  46              	@ -freg-struct-return -fregmove -freorder-blocks -freorder-functions
+  47              	@ -frerun-cse-after-loop -fsched-critical-path-heuristic
+  48              	@ -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock
+  49              	@ -fsched-last-insn-heuristic -fsched-pressure -fsched-rank-heuristic
+  50              	@ -fsched-spec -fsched-spec-insn-heuristic -fsched-stalled-insns-dep
+  51              	@ -fschedule-insns2 -fsection-anchors -fshow-column -fshrink-wrap
+  52              	@ -fsigned-zeros -fsplit-ivs-in-unroller -fsplit-wide-types
+  53              	@ -fstrict-aliasing -fstrict-overflow -fstrict-volatile-bitfields
+  54              	@ -fsync-libcalls -fthread-jumps -ftoplevel-reorder -ftrapping-math
+  55              	@ -ftree-bit-ccp -ftree-builtin-call-dce -ftree-ccp -ftree-ch
+  56              	@ -ftree-coalesce-vars -ftree-copy-prop -ftree-copyrename -ftree-cselim
+  57              	@ -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+ARM GAS  /tmp/ccBphW2A.s 			page 2
+
+
+  58              	@ -ftree-loop-if-convert -ftree-loop-im -ftree-loop-ivcanon
+  59              	@ -ftree-loop-optimize -ftree-parallelize-loops= -ftree-phiprop -ftree-pre
+  60              	@ -ftree-pta -ftree-reassoc -ftree-scev-cprop -ftree-sink
+  61              	@ -ftree-slp-vectorize -ftree-slsr -ftree-sra -ftree-switch-conversion
+  62              	@ -ftree-tail-merge -ftree-ter -ftree-vect-loop-version -ftree-vrp
+  63              	@ -funit-at-a-time -fvar-tracking -fvar-tracking-assignments -fverbose-asm
+  64              	@ -fzero-initialized-in-bss -mlittle-endian -mpic-data-is-text-relative
+  65              	@ -msched-prolog -mthumb -mvectorize-with-neon-quad
+  66              	
+  67              		.text
+  68              	.Ltext0:
+  69              		.cfi_sections	.debug_frame
+  70              		.align	1
+  71              		.global	SystemInit
+  72              		.code	16
+  73              		.thumb_func
+  74              		.type	SystemInit, %function
+  75              	SystemInit:
+  76              	.LFB32:
+  77              		.file 1 "../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_st
+   1:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /**
+   2:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   ******************************************************************************
+   3:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @file    system_stm32f0xx.c
+   4:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @author  MCD Application Team
+   5:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @version V1.0.0
+   6:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @date    23-March-2012
+   7:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @brief   CMSIS Cortex-M0 Device Peripheral Access Layer System Source File.
+   8:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *          This file contains the system clock configuration for STM32F0xx devices,
+   9:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *          and is generated by the clock configuration tool  
+  10:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *          STM32F0xx_Clock_Configuration_V1.0.0.xls
+  11:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *
+  12:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * 1.  This file provides two functions and one global variable to be called from 
+  13:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *     user application:
+  14:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *      - SystemInit(): Setups the system clock (System clock source, PLL Multiplier
+  15:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *                      and Divider factors, AHB/APBx prescalers and Flash settings),
+  16:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *                      depending on the configuration made in the clock xls tool.
+  17:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *                      This function is called at startup just after reset and 
+  18:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *                      before branch to main program. This call is made inside
+  19:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *                      the "startup_stm32f0xx.s" file.
+  20:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *
+  21:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *      - SystemCoreClock variable: Contains the core clock (HCLK), it can be used
+  22:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *                                  by the user application to setup the SysTick 
+  23:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *                                  timer or configure other parameters.
+  24:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *
+  25:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *      - SystemCoreClockUpdate(): Updates the variable SystemCoreClock and must
+  26:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *                                 be called whenever the core clock is changed
+  27:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *                                 during program execution.
+  28:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *
+  29:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * 2. After each device reset the HSI (8 MHz Range) is used as system clock source.
+  30:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *    Then SystemInit() function is called, in "startup_stm32f0xx.s" file, to
+  31:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *    configure the system clock before to branch to main program.
+  32:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *
+  33:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * 3. If the system clock source selected by user fails to startup, the SystemInit()
+  34:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *    function will do nothing and HSI still used as system clock source. User can 
+  35:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *    add some code to deal with this issue inside the SetSysClock() function.
+  36:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *
+  37:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * 4. The default value of HSE crystal is set to 8MHz, refer to "HSE_VALUE" define
+ARM GAS  /tmp/ccBphW2A.s 			page 3
+
+
+  38:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *    in "stm32f0xx.h" file. When HSE is used as system clock source, directly or
+  39:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *    through PLL, and you are using different crystal you have to adapt the HSE
+  40:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *    value to your own configuration.
+  41:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *
+  42:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * 5. This file configures the system clock as follows:
+  43:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *=============================================================================
+  44:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *                         System Clock Configuration
+  45:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *=============================================================================
+  46:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *        System Clock source          | PLL(HSE)
+  47:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *-----------------------------------------------------------------------------
+  48:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *        SYSCLK                       | 48000000 Hz
+  49:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *-----------------------------------------------------------------------------
+  50:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *        HCLK                         | 48000000 Hz
+  51:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *-----------------------------------------------------------------------------
+  52:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *        AHB Prescaler                | 1
+  53:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *-----------------------------------------------------------------------------
+  54:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *        APB1 Prescaler               | 1
+  55:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *-----------------------------------------------------------------------------
+  56:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *        APB2 Prescaler               | 1
+  57:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *-----------------------------------------------------------------------------
+  58:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *        HSE Frequency                | 8000000 Hz
+  59:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *-----------------------------------------------------------------------------
+  60:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *        PLL MUL                      | 6
+  61:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *-----------------------------------------------------------------------------
+  62:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *        VDD                          | 3.3 V
+  63:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *-----------------------------------------------------------------------------
+  64:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *        Flash Latency                | 1 WS
+  65:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *-----------------------------------------------------------------------------
+  66:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *=============================================================================
+  67:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   ******************************************************************************
+  68:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @attention
+  69:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *
+  70:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * <h2><center>&copy; COPYRIGHT 2012 STMicroelectronics</center></h2>
+  71:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *
+  72:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+  73:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * You may not use this file except in compliance with the License.
+  74:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * You may obtain a copy of the License at:
+  75:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *
+  76:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *        http://www.st.com/software_license_agreement_liberty_v2
+  77:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *
+  78:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * Unless required by applicable law or agreed to in writing, software 
+  79:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * distributed under the License is distributed on an "AS IS" BASIS, 
+  80:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  81:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * See the License for the specific language governing permissions and
+  82:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * limitations under the License.
+  83:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *
+  84:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   ******************************************************************************
+  85:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */
+  86:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+  87:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /** @addtogroup CMSIS
+  88:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @{
+  89:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */
+  90:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+  91:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /** @addtogroup stm32f0xx_system
+  92:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @{
+  93:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */  
+  94:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   
+ARM GAS  /tmp/ccBphW2A.s 			page 4
+
+
+  95:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /** @addtogroup STM32F0xx_System_Private_Includes
+  96:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @{
+  97:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */
+  98:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+  99:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** #include "stm32f0xx.h"
+ 100:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 101:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /**
+ 102:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @}
+ 103:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */
+ 104:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 105:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /** @addtogroup STM32F0xx_System_Private_TypesDefinitions
+ 106:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @{
+ 107:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */
+ 108:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 109:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /**
+ 110:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @}
+ 111:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */
+ 112:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 113:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /** @addtogroup STM32F0xx_System_Private_Defines
+ 114:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @{
+ 115:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */
+ 116:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /**
+ 117:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @}
+ 118:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */
+ 119:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 120:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /** @addtogroup STM32F0xx_System_Private_Macros
+ 121:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @{
+ 122:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */
+ 123:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 124:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /**
+ 125:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @}
+ 126:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */
+ 127:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 128:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /** @addtogroup STM32F0xx_System_Private_Variables
+ 129:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @{
+ 130:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */
+ 131:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** uint32_t SystemCoreClock    = 48000000;
+ 132:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** __I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+ 133:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 134:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /**
+ 135:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @}
+ 136:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */
+ 137:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 138:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /** @addtogroup STM32F0xx_System_Private_FunctionPrototypes
+ 139:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @{
+ 140:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */
+ 141:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 142:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** static void SetSysClock(void);
+ 143:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 144:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /**
+ 145:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @}
+ 146:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */
+ 147:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 148:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /** @addtogroup STM32F0xx_System_Private_Functions
+ 149:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @{
+ 150:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */
+ 151:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ARM GAS  /tmp/ccBphW2A.s 			page 5
+
+
+ 152:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /**
+ 153:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @brief  Setup the microcontroller system.
+ 154:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *         Initialize the Embedded Flash Interface, the PLL and update the 
+ 155:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *         SystemCoreClock variable.
+ 156:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @param  None
+ 157:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @retval None
+ 158:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */
+ 159:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** void SystemInit (void)
+ 160:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** {    
+  78              		.loc 1 160 0
+  79              		.cfi_startproc
+ 161:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   /* Set HSION bit */
+ 162:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   RCC->CR |= (uint32_t)0x00000001;
+  80              		.loc 1 162 0
+  81 0000 334B     		ldr	r3, .L15	@ tmp153,
+ 160:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** {    
+  82              		.loc 1 160 0
+  83 0002 13B5     		push	{r0, r1, r4, lr}	@
+  84              	.LCFI0:
+  85              		.cfi_def_cfa_offset 16
+  86              		.cfi_offset 0, -16
+  87              		.cfi_offset 1, -12
+  88              		.cfi_offset 4, -8
+  89              		.cfi_offset 14, -4
+  90              		.loc 1 162 0
+  91 0004 1968     		ldr	r1, [r3]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CR
+  92 0006 0122     		mov	r2, #1	@ tmp154,
+  93 0008 1143     		orr	r1, r2	@ D.4907, tmp154
+  94 000a 1960     		str	r1, [r3]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CR
+ 163:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 164:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   /* Reset SW[1:0], HPRE[3:0], PPRE[2:0], ADCPRE and MCOSEL[2:0] bits */
+ 165:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   RCC->CFGR &= (uint32_t)0xF8FFB80C;
+  95              		.loc 1 165 0
+  96 000c 5868     		ldr	r0, [r3, #4]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+  97 000e 3149     		ldr	r1, .L15+4	@ tmp157,
+ 166:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   
+ 167:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   /* Reset HSEON, CSSON and PLLON bits */
+ 168:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   RCC->CR &= (uint32_t)0xFEF6FFFF;
+ 169:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 170:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   /* Reset HSEBYP bit */
+ 171:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   RCC->CR &= (uint32_t)0xFFFBFFFF;
+ 172:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 173:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   /* Reset PLLSRC, PLLXTPRE and PLLMUL[3:0] bits */
+ 174:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   RCC->CFGR &= (uint32_t)0xFFC0FFFF;
+ 175:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 176:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   /* Reset PREDIV1[3:0] bits */
+ 177:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   RCC->CFGR2 &= (uint32_t)0xFFFFFFF0;
+  98              		.loc 1 177 0
+  99 0010 0F24     		mov	r4, #15	@ tmp169,
+ 165:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   RCC->CFGR &= (uint32_t)0xF8FFB80C;
+ 100              		.loc 1 165 0
+ 101 0012 0140     		and	r1, r0	@ D.4907, D.4907
+ 102 0014 5960     		str	r1, [r3, #4]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 168:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   RCC->CR &= (uint32_t)0xFEF6FFFF;
+ 103              		.loc 1 168 0
+ 104 0016 1868     		ldr	r0, [r3]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CR
+ 105 0018 2F49     		ldr	r1, .L15+8	@ tmp160,
+ARM GAS  /tmp/ccBphW2A.s 			page 6
+
+
+ 106 001a 0140     		and	r1, r0	@ D.4907, D.4907
+ 107 001c 1960     		str	r1, [r3]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CR
+ 171:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   RCC->CR &= (uint32_t)0xFFFBFFFF;
+ 108              		.loc 1 171 0
+ 109 001e 1868     		ldr	r0, [r3]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CR
+ 110 0020 2E49     		ldr	r1, .L15+12	@ tmp163,
+ 111 0022 0140     		and	r1, r0	@ D.4907, D.4907
+ 112 0024 1960     		str	r1, [r3]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CR
+ 174:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   RCC->CFGR &= (uint32_t)0xFFC0FFFF;
+ 113              		.loc 1 174 0
+ 114 0026 5868     		ldr	r0, [r3, #4]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 115 0028 2D49     		ldr	r1, .L15+16	@ tmp166,
+ 116 002a 0840     		and	r0, r1	@ D.4907, tmp166
+ 117 002c 5860     		str	r0, [r3, #4]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 118              		.loc 1 177 0
+ 119 002e D86A     		ldr	r0, [r3, #44]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR2
+ 120 0030 A043     		bic	r0, r4	@ D.4907, tmp169
+ 121 0032 D862     		str	r0, [r3, #44]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR2
+ 178:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 179:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   /* Reset USARTSW[1:0], I2CSW, CECSW and ADCSW bits */
+ 180:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   RCC->CFGR3 &= (uint32_t)0xFFFFFEAC;
+ 122              		.loc 1 180 0
+ 123 0034 1C6B     		ldr	r4, [r3, #48]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR3
+ 124 0036 2B48     		ldr	r0, .L15+20	@ tmp172,
+ 125 0038 2040     		and	r0, r4	@ D.4907, D.4907
+ 126 003a 1863     		str	r0, [r3, #48]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR3
+ 181:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 182:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   /* Reset HSI14 bit */
+ 183:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   RCC->CR2 &= (uint32_t)0xFFFFFFFE;
+ 127              		.loc 1 183 0
+ 128 003c 586B     		ldr	r0, [r3, #52]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CR2
+ 129 003e 9043     		bic	r0, r2	@ D.4907, tmp154
+ 184:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 185:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   /* Disable all interrupts */
+ 186:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   RCC->CIR = 0x00000000;
+ 130              		.loc 1 186 0
+ 131 0040 0022     		mov	r2, #0	@ tmp178,
+ 183:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   RCC->CR2 &= (uint32_t)0xFFFFFFFE;
+ 132              		.loc 1 183 0
+ 133 0042 5863     		str	r0, [r3, #52]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CR2
+ 134              		.loc 1 186 0
+ 135 0044 9A60     		str	r2, [r3, #8]	@ tmp178, MEM[(struct RCC_TypeDef *)1073876992B].CIR
+ 136              	.LBB4:
+ 137              	.LBB5:
+ 187:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 188:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   /* Configure the System clock frequency, AHB/APBx prescalers and Flash settings */
+ 189:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   SetSysClock();
+ 190:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** }
+ 191:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 192:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /**
+ 193:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @brief  Update SystemCoreClock according to Clock Register Values
+ 194:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *         The SystemCoreClock variable contains the core clock (HCLK), it can
+ 195:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *         be used by the user application to setup the SysTick timer or configure
+ 196:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *         other parameters.
+ 197:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *
+ 198:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @note   Each time the core clock (HCLK) changes, this function must be called
+ 199:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *         to update SystemCoreClock variable value. Otherwise, any configuration
+ARM GAS  /tmp/ccBphW2A.s 			page 7
+
+
+ 200:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *         based on this variable will be incorrect.         
+ 201:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *
+ 202:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @note   - The system frequency computed by this function is not the real 
+ 203:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *           frequency in the chip. It is calculated based on the predefined 
+ 204:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *           constant and the selected clock source:
+ 205:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *
+ 206:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *           - If SYSCLK source is HSI, SystemCoreClock will contain the HSI_VALUE(*)
+ 207:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *                                              
+ 208:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *           - If SYSCLK source is HSE, SystemCoreClock will contain the HSE_VALUE(**)
+ 209:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *                          
+ 210:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *           - If SYSCLK source is PLL, SystemCoreClock will contain the HSE_VALUE(**)
+ 211:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *             or HSI_VALUE(*) multiplied/divided by the PLL factors.
+ 212:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *
+ 213:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *         (*) HSI_VALUE is a constant defined in stm32f0xx.h file (default value
+ 214:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *             8 MHz) but the real value may vary depending on the variations
+ 215:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *             in voltage and temperature.
+ 216:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *
+ 217:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *         (**) HSE_VALUE is a constant defined in stm32f0xx.h file (default value
+ 218:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *              8 MHz), user has to ensure that HSE_VALUE is same as the real
+ 219:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *              frequency of the crystal used. Otherwise, this function may
+ 220:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *              have wrong result.
+ 221:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *
+ 222:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *         - The result of this function could be not correct when using fractional
+ 223:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *           value for HSE crystal.
+ 224:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @param  None
+ 225:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @retval None
+ 226:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */
+ 227:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** void SystemCoreClockUpdate (void)
+ 228:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** {
+ 229:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   uint32_t tmp = 0, pllmull = 0, pllsource = 0, prediv1factor = 0;
+ 230:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 231:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   /* Get SYSCLK source -------------------------------------------------------*/
+ 232:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   tmp = RCC->CFGR & RCC_CFGR_SWS;
+ 233:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   
+ 234:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   switch (tmp)
+ 235:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   {
+ 236:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     case 0x00:  /* HSI used as system clock */
+ 237:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       SystemCoreClock = HSI_VALUE;
+ 238:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       break;
+ 239:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     case 0x04:  /* HSE used as system clock */
+ 240:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       SystemCoreClock = HSE_VALUE;
+ 241:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       break;
+ 242:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     case 0x08:  /* PLL used as system clock */
+ 243:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       /* Get PLL clock source and multiplication factor ----------------------*/
+ 244:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       pllmull = RCC->CFGR & RCC_CFGR_PLLMULL;
+ 245:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       pllsource = RCC->CFGR & RCC_CFGR_PLLSRC;
+ 246:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       pllmull = ( pllmull >> 18) + 2;
+ 247:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       
+ 248:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       if (pllsource == 0x00)
+ 249:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       {
+ 250:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****         /* HSI oscillator clock divided by 2 selected as PLL clock entry */
+ 251:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****         SystemCoreClock = (HSI_VALUE >> 1) * pllmull;
+ 252:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       }
+ 253:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       else
+ 254:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       {
+ 255:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****         prediv1factor = (RCC->CFGR2 & RCC_CFGR2_PREDIV1) + 1;
+ 256:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****         /* HSE oscillator clock selected as PREDIV1 clock entry */
+ARM GAS  /tmp/ccBphW2A.s 			page 8
+
+
+ 257:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****         SystemCoreClock = (HSE_VALUE / prediv1factor) * pllmull; 
+ 258:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       }      
+ 259:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       break;
+ 260:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     default: /* HSI used as system clock */
+ 261:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       SystemCoreClock = HSI_VALUE;
+ 262:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       break;
+ 263:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   }
+ 264:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   /* Compute HCLK clock frequency ----------------*/
+ 265:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   /* Get HCLK prescaler */
+ 266:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   tmp = AHBPrescTable[((RCC->CFGR & RCC_CFGR_HPRE) >> 4)];
+ 267:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   /* HCLK clock frequency */
+ 268:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   SystemCoreClock >>= tmp;  
+ 269:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** }
+ 270:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 271:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** /**
+ 272:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @brief  Configures the System clock frequency, AHB/APBx prescalers and Flash
+ 273:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *         settings.
+ 274:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @note   This function should be called only once the RCC clock configuration
+ 275:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   *         is reset to the default reset state (done in SystemInit() function).
+ 276:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @param  None
+ 277:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   * @retval None
+ 278:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   */
+ 279:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** static void SetSysClock(void)
+ 280:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** {
+ 281:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   __IO uint32_t StartUpCounter = 0, HSEStatus = 0;
+ 138              		.loc 1 281 0
+ 139 0046 0092     		str	r2, [sp]	@ tmp178, StartUpCounter
+ 140 0048 0192     		str	r2, [sp, #4]	@ tmp178, HSEStatus
+ 282:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   
+ 283:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   /* SYSCLK, HCLK, PCLK configuration ----------------------------------------*/
+ 284:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   /* Enable HSE */    
+ 285:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   RCC->CR |= ((uint32_t)RCC_CR_HSEON);
+ 141              		.loc 1 285 0
+ 142 004a 1868     		ldr	r0, [r3]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CR
+ 143 004c 8022     		mov	r2, #128	@ tmp226,
+ 144 004e 5202     		lsl	r2, r2, #9	@ tmp182, tmp226,
+ 145 0050 0243     		orr	r2, r0	@ D.4907, D.4907
+ 146 0052 1A60     		str	r2, [r3]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CR
+ 147              	.L3:
+ 286:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****  
+ 287:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   /* Wait till HSE is ready and if Time out is reached exit */
+ 288:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   do
+ 289:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   {
+ 290:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     HSEStatus = RCC->CR & RCC_CR_HSERDY;
+ 148              		.loc 1 290 0
+ 149 0054 1868     		ldr	r0, [r3]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CR
+ 150 0056 8022     		mov	r2, #128	@ tmp225,
+ 151 0058 9202     		lsl	r2, r2, #10	@ tmp185, tmp225,
+ 152 005a 1040     		and	r0, r2	@ HSEStatus.0, tmp185
+ 153 005c 0190     		str	r0, [sp, #4]	@ HSEStatus.0, HSEStatus
+ 291:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     StartUpCounter++;  
+ 154              		.loc 1 291 0
+ 155 005e 0098     		ldr	r0, [sp]	@ StartUpCounter.1, StartUpCounter
+ 156 0060 0130     		add	r0, r0, #1	@ StartUpCounter.2,
+ 157 0062 0090     		str	r0, [sp]	@ StartUpCounter.2, StartUpCounter
+ 292:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   } while((HSEStatus == 0) && (StartUpCounter != HSE_STARTUP_TIMEOUT));
+ 158              		.loc 1 292 0
+ARM GAS  /tmp/ccBphW2A.s 			page 9
+
+
+ 159 0064 0198     		ldr	r0, [sp, #4]	@ HSEStatus.3, HSEStatus
+ 160 0066 0028     		cmp	r0, #0	@ HSEStatus.3,
+ 161 0068 04D1     		bne	.L2	@,
+ 162 006a 009C     		ldr	r4, [sp]	@ StartUpCounter.4, StartUpCounter
+ 163 006c A020     		mov	r0, #160	@ tmp224,
+ 164 006e C000     		lsl	r0, r0, #3	@ tmp186, tmp224,
+ 165 0070 8442     		cmp	r4, r0	@ StartUpCounter.4, tmp186
+ 166 0072 EFD1     		bne	.L3	@,
+ 167              	.L2:
+ 293:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 294:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   if ((RCC->CR & RCC_CR_HSERDY) != RESET)
+ 168              		.loc 1 294 0
+ 169 0074 1868     		ldr	r0, [r3]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CR
+ 170 0076 0240     		and	r2, r0	@ D.4907, D.4907
+ 171 0078 00D0     		beq	.L4	@,
+ 295:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   {
+ 296:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     HSEStatus = (uint32_t)0x01;
+ 172              		.loc 1 296 0
+ 173 007a 0122     		mov	r2, #1	@ tmp190,
+ 174              	.L4:
+ 297:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   }
+ 298:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   else
+ 299:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   {
+ 300:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     HSEStatus = (uint32_t)0x00;
+ 175              		.loc 1 300 0
+ 176 007c 0192     		str	r2, [sp, #4]	@ D.4907, HSEStatus
+ 301:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   }  
+ 302:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 303:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   if (HSEStatus == (uint32_t)0x01)
+ 177              		.loc 1 303 0
+ 178 007e 019A     		ldr	r2, [sp, #4]	@ HSEStatus.5, HSEStatus
+ 179 0080 012A     		cmp	r2, #1	@ HSEStatus.5,
+ 180 0082 24D1     		bne	.L1	@,
+ 304:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   {
+ 305:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     /* Enable Prefetch Buffer and set Flash Latency */
+ 306:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     FLASH->ACR = FLASH_ACR_PRFTBE | FLASH_ACR_LATENCY;
+ 181              		.loc 1 306 0
+ 182 0084 184A     		ldr	r2, .L15+24	@ tmp192,
+ 183 0086 1120     		mov	r0, #17	@ tmp193,
+ 184 0088 1060     		str	r0, [r2]	@ tmp193, MEM[(struct FLASH_TypeDef *)1073881088B].ACR
+ 307:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****  
+ 308:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     /* HCLK = SYSCLK */
+ 309:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_HPRE_DIV1;
+ 185              		.loc 1 309 0
+ 186 008a 5A68     		ldr	r2, [r3, #4]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 187 008c 5A60     		str	r2, [r3, #4]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 310:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       
+ 311:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     /* PCLK = HCLK */
+ 312:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE_DIV1;
+ 188              		.loc 1 312 0
+ 189 008e 5A68     		ldr	r2, [r3, #4]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 190 0090 5A60     		str	r2, [r3, #4]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 313:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 314:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     /* PLL configuration = HSE * 6 = 48 MHz */
+ 315:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLMULL));
+ 191              		.loc 1 315 0
+ 192 0092 5A68     		ldr	r2, [r3, #4]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ARM GAS  /tmp/ccBphW2A.s 			page 10
+
+
+ 193 0094 1140     		and	r1, r2	@ D.4907, D.4907
+ 194 0096 5960     		str	r1, [r3, #4]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 316:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_PREDIV1 | RCC_CFGR_PLLXTPRE_PREDIV1 | RCC_CFGR_PLLMULL6
+ 195              		.loc 1 316 0
+ 196 0098 5968     		ldr	r1, [r3, #4]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 197 009a 8822     		mov	r2, #136	@ tmp222,
+ 198 009c 5203     		lsl	r2, r2, #13	@ tmp202, tmp222,
+ 199 009e 0A43     		orr	r2, r1	@ D.4907, D.4907
+ 200 00a0 5A60     		str	r2, [r3, #4]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 317:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****             
+ 318:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     /* Enable PLL */
+ 319:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     RCC->CR |= RCC_CR_PLLON;
+ 201              		.loc 1 319 0
+ 202 00a2 1968     		ldr	r1, [r3]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CR
+ 203 00a4 8022     		mov	r2, #128	@ tmp223,
+ 204 00a6 8240     		lsl	r2, r2, r0	@ tmp205, tmp223,
+ 205 00a8 0A43     		orr	r2, r1	@ D.4907, D.4907
+ 206 00aa 1A60     		str	r2, [r3]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CR
+ 207              	.L8:
+ 320:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 321:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     /* Wait till PLL is ready */
+ 322:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     while((RCC->CR & RCC_CR_PLLRDY) == 0)
+ 208              		.loc 1 322 0
+ 209 00ac 1968     		ldr	r1, [r3]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CR
+ 210 00ae 084A     		ldr	r2, .L15	@ tmp207,
+ 211 00b0 8801     		lsl	r0, r1, #6	@, D.4907,
+ 212 00b2 FBD5     		bpl	.L8	@,
+ 323:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     {
+ 324:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     }
+ 325:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 326:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     /* Select PLL as system clock source */
+ 327:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_SW));
+ 213              		.loc 1 327 0
+ 214 00b4 5168     		ldr	r1, [r2, #4]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 215 00b6 0320     		mov	r0, #3	@ tmp211,
+ 216 00b8 8143     		bic	r1, r0	@ D.4907, tmp211
+ 217 00ba 5160     		str	r1, [r2, #4]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 328:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_SW_PLL;    
+ 218              		.loc 1 328 0
+ 219 00bc 5168     		ldr	r1, [r2, #4]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 220 00be 0220     		mov	r0, #2	@ tmp214,
+ 221 00c0 0143     		orr	r1, r0	@ D.4907, tmp214
+ 222 00c2 5160     		str	r1, [r2, #4]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 223              	.L10:
+ 329:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** 
+ 330:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     /* Wait till PLL is used as system clock source */
+ 331:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****     while ((RCC->CFGR & (uint32_t)RCC_CFGR_SWS) != (uint32_t)RCC_CFGR_SWS_PLL)
+ 224              		.loc 1 331 0
+ 225 00c4 5968     		ldr	r1, [r3, #4]	@ D.4907, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 226 00c6 0C22     		mov	r2, #12	@ tmp218,
+ 227 00c8 0A40     		and	r2, r1	@ D.4907, D.4907
+ 228 00ca 082A     		cmp	r2, #8	@ D.4907,
+ 229 00cc FAD1     		bne	.L10	@,
+ 230              	.L1:
+ 231              	.LBE5:
+ 232              	.LBE4:
+ 190:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** }
+ARM GAS  /tmp/ccBphW2A.s 			page 11
+
+
+ 233              		.loc 1 190 0
+ 234              		@ sp needed	@
+ 235 00ce 13BD     		pop	{r0, r1, r4, pc}
+ 236              	.L16:
+ 237              		.align	2
+ 238              	.L15:
+ 239 00d0 00100240 		.word	1073876992
+ 240 00d4 0CB8FFF8 		.word	-117458932
+ 241 00d8 FFFFF6FE 		.word	-17367041
+ 242 00dc FFFFFBFF 		.word	-262145
+ 243 00e0 FFFFC0FF 		.word	-4128769
+ 244 00e4 ACFEFFFF 		.word	-340
+ 245 00e8 00200240 		.word	1073881088
+ 246              		.cfi_endproc
+ 247              	.LFE32:
+ 248              		.size	SystemInit, .-SystemInit
+ 249              		.global	__aeabi_uidiv
+ 250              		.align	1
+ 251              		.global	SystemCoreClockUpdate
+ 252              		.code	16
+ 253              		.thumb_func
+ 254              		.type	SystemCoreClockUpdate, %function
+ 255              	SystemCoreClockUpdate:
+ 256              	.LFB33:
+ 228:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** {
+ 257              		.loc 1 228 0
+ 258              		.cfi_startproc
+ 259              	.LVL0:
+ 260 00ec 70B5     		push	{r4, r5, r6, lr}	@
+ 261              	.LCFI1:
+ 262              		.cfi_def_cfa_offset 16
+ 263              		.cfi_offset 4, -16
+ 264              		.cfi_offset 5, -12
+ 265              		.cfi_offset 6, -8
+ 266              		.cfi_offset 14, -4
+ 232:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   tmp = RCC->CFGR & RCC_CFGR_SWS;
+ 267              		.loc 1 232 0
+ 268 00ee 144D     		ldr	r5, .L25	@ tmp131,
+ 269 00f0 0C23     		mov	r3, #12	@ tmp133,
+ 270 00f2 6A68     		ldr	r2, [r5, #4]	@ D.4910, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 271              	.LVL1:
+ 272 00f4 134C     		ldr	r4, .L25+4	@ tmp172,
+ 273 00f6 1340     		and	r3, r2	@ tmp, D.4910
+ 274              	.LVL2:
+ 234:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   switch (tmp)
+ 275              		.loc 1 234 0
+ 276 00f8 042B     		cmp	r3, #4	@ tmp,
+ 277 00fa 01D0     		beq	.L19	@,
+ 278 00fc 082B     		cmp	r3, #8	@ tmp,
+ 279 00fe 02D0     		beq	.L20	@,
+ 280              	.L19:
+ 240:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       SystemCoreClock = HSE_VALUE;
+ 281              		.loc 1 240 0
+ 282 0100 114B     		ldr	r3, .L25+8	@ tmp137,
+ 283              	.LVL3:
+ 284 0102 2360     		str	r3, [r4]	@ tmp137, SystemCoreClock
+ 241:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       break;
+ARM GAS  /tmp/ccBphW2A.s 			page 12
+
+
+ 285              		.loc 1 241 0
+ 286 0104 12E0     		b	.L22	@
+ 287              	.LVL4:
+ 288              	.L20:
+ 244:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       pllmull = RCC->CFGR & RCC_CFGR_PLLMULL;
+ 289              		.loc 1 244 0
+ 290 0106 6E68     		ldr	r6, [r5, #4]	@ D.4910, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 291              	.LVL5:
+ 245:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       pllsource = RCC->CFGR & RCC_CFGR_PLLSRC;
+ 292              		.loc 1 245 0
+ 293 0108 6B68     		ldr	r3, [r5, #4]	@ D.4910, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 294              	.LVL6:
+ 244:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       pllmull = RCC->CFGR & RCC_CFGR_PLLMULL;
+ 295              		.loc 1 244 0
+ 296 010a B602     		lsl	r6, r6, #10	@ pllmull, D.4910,
+ 297              	.LVL7:
+ 246:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       pllmull = ( pllmull >> 18) + 2;
+ 298              		.loc 1 246 0
+ 299 010c 360F     		lsr	r6, r6, #28	@ D.4910, pllmull,
+ 300 010e 0236     		add	r6, r6, #2	@ pllmull,
+ 301              	.LVL8:
+ 248:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****       if (pllsource == 0x00)
+ 302              		.loc 1 248 0
+ 303 0110 DA03     		lsl	r2, r3, #15	@, D.4910,
+ 304 0112 02D4     		bmi	.L23	@,
+ 305              	.LVL9:
+ 251:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****         SystemCoreClock = (HSI_VALUE >> 1) * pllmull;
+ 306              		.loc 1 251 0
+ 307 0114 0D4B     		ldr	r3, .L25+12	@ tmp146,
+ 308              	.LVL10:
+ 309 0116 5E43     		mul	r6, r3	@ SystemCoreClock.6, tmp146
+ 310              	.LVL11:
+ 311 0118 07E0     		b	.L24	@
+ 312              	.LVL12:
+ 313              	.L23:
+ 255:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****         prediv1factor = (RCC->CFGR2 & RCC_CFGR2_PREDIV1) + 1;
+ 314              		.loc 1 255 0
+ 315 011a E96A     		ldr	r1, [r5, #44]	@ D.4910, MEM[(struct RCC_TypeDef *)1073876992B].CFGR2
+ 316              	.LVL13:
+ 317 011c 0F23     		mov	r3, #15	@ tmp150,
+ 318              	.LVL14:
+ 319 011e 1940     		and	r1, r3	@ D.4910, tmp150
+ 320              	.LVL15:
+ 321 0120 0131     		add	r1, r1, #1	@ prediv1factor,
+ 322              	.LVL16:
+ 257:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****         SystemCoreClock = (HSE_VALUE / prediv1factor) * pllmull; 
+ 323              		.loc 1 257 0
+ 324 0122 0948     		ldr	r0, .L25+8	@,
+ 325 0124 FFF7FEFF 		bl	__aeabi_uidiv	@
+ 326              	.LVL17:
+ 327 0128 4643     		mul	r6, r0	@ SystemCoreClock.7, D.4910
+ 328              	.LVL18:
+ 329              	.L24:
+ 330 012a 2660     		str	r6, [r4]	@ SystemCoreClock.7, SystemCoreClock
+ 331              	.L22:
+ 266:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   tmp = AHBPrescTable[((RCC->CFGR & RCC_CFGR_HPRE) >> 4)];
+ 332              		.loc 1 266 0
+ARM GAS  /tmp/ccBphW2A.s 			page 13
+
+
+ 333 012c 6B68     		ldr	r3, [r5, #4]	@ D.4910, MEM[(struct RCC_TypeDef *)1073876992B].CFGR
+ 268:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   SystemCoreClock >>= tmp;  
+ 334              		.loc 1 268 0
+ 335 012e 2268     		ldr	r2, [r4]	@, SystemCoreClock
+ 266:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   tmp = AHBPrescTable[((RCC->CFGR & RCC_CFGR_HPRE) >> 4)];
+ 336              		.loc 1 266 0
+ 337 0130 1B06     		lsl	r3, r3, #24	@ D.4910, D.4910,
+ 338 0132 1B0F     		lsr	r3, r3, #28	@ D.4910, D.4910,
+ 339 0134 E318     		add	r3, r4, r3	@ tmp163, tmp172, D.4910
+ 340 0136 1B79     		ldrb	r3, [r3, #4]	@ tmp166, AHBPrescTable
+ 341              	.LVL19:
+ 269:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** }
+ 342              		.loc 1 269 0
+ 343              		@ sp needed	@
+ 268:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c ****   SystemCoreClock >>= tmp;  
+ 344              		.loc 1 268 0
+ 345 0138 DA40     		lsr	r2, r2, r3	@,, tmp166
+ 346 013a 2260     		str	r2, [r4]	@ SystemCoreClock.10, SystemCoreClock
+ 269:../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c **** }
+ 347              		.loc 1 269 0
+ 348 013c 70BD     		pop	{r4, r5, r6, pc}
+ 349              	.L26:
+ 350 013e C046     		.align	2
+ 351              	.L25:
+ 352 0140 00100240 		.word	1073876992
+ 353 0144 00000000 		.word	.LANCHOR0
+ 354 0148 00127A00 		.word	8000000
+ 355 014c 00093D00 		.word	4000000
+ 356              		.cfi_endproc
+ 357              	.LFE33:
+ 358              		.size	SystemCoreClockUpdate, .-SystemCoreClockUpdate
+ 359              		.global	AHBPrescTable
+ 360              		.global	SystemCoreClock
+ 361              		.data
+ 362              		.align	2
+ 363              		.set	.LANCHOR0,. + 0
+ 364              		.type	SystemCoreClock, %object
+ 365              		.size	SystemCoreClock, 4
+ 366              	SystemCoreClock:
+ 367 0000 006CDC02 		.word	48000000
+ 368              		.type	AHBPrescTable, %object
+ 369              		.size	AHBPrescTable, 16
+ 370              	AHBPrescTable:
+ 371 0004 00       		.byte	0
+ 372 0005 00       		.byte	0
+ 373 0006 00       		.byte	0
+ 374 0007 00       		.byte	0
+ 375 0008 00       		.byte	0
+ 376 0009 00       		.byte	0
+ 377 000a 00       		.byte	0
+ 378 000b 00       		.byte	0
+ 379 000c 01       		.byte	1
+ 380 000d 02       		.byte	2
+ 381 000e 03       		.byte	3
+ 382 000f 04       		.byte	4
+ 383 0010 06       		.byte	6
+ 384 0011 07       		.byte	7
+ARM GAS  /tmp/ccBphW2A.s 			page 14
+
+
+ 385 0012 08       		.byte	8
+ 386 0013 09       		.byte	9
+ 387              		.text
+ 388              	.Letext0:
+ 389              		.file 2 "/usr/arm-none-eabi/include/machine/_default_types.h"
+ 390              		.file 3 "/usr/arm-none-eabi/include/stdint.h"
+ 391              		.file 4 "../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Include/stm32f0xx.h"
+ 392              		.section	.debug_info,"",%progbits
+ 393              	.Ldebug_info0:
+ 394 0000 4D030000 		.4byte	0x34d
+ 395 0004 0200     		.2byte	0x2
+ 396 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 397 000a 04       		.byte	0x4
+ 398 000b 01       		.uleb128 0x1
+ 399 000c 36010000 		.4byte	.LASF42
+ 400 0010 01       		.byte	0x1
+ 401 0011 42020000 		.4byte	.LASF43
+ 402 0015 EE000000 		.4byte	.LASF44
+ 403 0019 00000000 		.4byte	.Ltext0
+ 404 001d 50010000 		.4byte	.Letext0
+ 405 0021 00000000 		.4byte	.Ldebug_line0
+ 406 0025 02       		.uleb128 0x2
+ 407 0026 01       		.byte	0x1
+ 408 0027 06       		.byte	0x6
+ 409 0028 DC020000 		.4byte	.LASF0
+ 410 002c 03       		.uleb128 0x3
+ 411 002d 08000000 		.4byte	.LASF3
+ 412 0031 02       		.byte	0x2
+ 413 0032 1C       		.byte	0x1c
+ 414 0033 37000000 		.4byte	0x37
+ 415 0037 02       		.uleb128 0x2
+ 416 0038 01       		.byte	0x1
+ 417 0039 08       		.byte	0x8
+ 418 003a B5000000 		.4byte	.LASF1
+ 419 003e 02       		.uleb128 0x2
+ 420 003f 02       		.byte	0x2
+ 421 0040 05       		.byte	0x5
+ 422 0041 57000000 		.4byte	.LASF2
+ 423 0045 03       		.uleb128 0x3
+ 424 0046 A5020000 		.4byte	.LASF4
+ 425 004a 02       		.byte	0x2
+ 426 004b 26       		.byte	0x26
+ 427 004c 50000000 		.4byte	0x50
+ 428 0050 02       		.uleb128 0x2
+ 429 0051 02       		.byte	0x2
+ 430 0052 07       		.byte	0x7
+ 431 0053 9A000000 		.4byte	.LASF5
+ 432 0057 02       		.uleb128 0x2
+ 433 0058 04       		.byte	0x4
+ 434 0059 05       		.byte	0x5
+ 435 005a CE020000 		.4byte	.LASF6
+ 436 005e 03       		.uleb128 0x3
+ 437 005f E3000000 		.4byte	.LASF7
+ 438 0063 02       		.byte	0x2
+ 439 0064 38       		.byte	0x38
+ 440 0065 69000000 		.4byte	0x69
+ 441 0069 02       		.uleb128 0x2
+ARM GAS  /tmp/ccBphW2A.s 			page 15
+
+
+ 442 006a 04       		.byte	0x4
+ 443 006b 07       		.byte	0x7
+ 444 006c 82000000 		.4byte	.LASF8
+ 445 0070 02       		.uleb128 0x2
+ 446 0071 08       		.byte	0x8
+ 447 0072 05       		.byte	0x5
+ 448 0073 0E020000 		.4byte	.LASF9
+ 449 0077 02       		.uleb128 0x2
+ 450 0078 08       		.byte	0x8
+ 451 0079 07       		.byte	0x7
+ 452 007a CA010000 		.4byte	.LASF10
+ 453 007e 04       		.uleb128 0x4
+ 454 007f 04       		.byte	0x4
+ 455 0080 05       		.byte	0x5
+ 456 0081 696E7400 		.ascii	"int\000"
+ 457 0085 02       		.uleb128 0x2
+ 458 0086 04       		.byte	0x4
+ 459 0087 07       		.byte	0x7
+ 460 0088 BD010000 		.4byte	.LASF11
+ 461 008c 03       		.uleb128 0x3
+ 462 008d E1010000 		.4byte	.LASF12
+ 463 0091 03       		.byte	0x3
+ 464 0092 2A       		.byte	0x2a
+ 465 0093 2C000000 		.4byte	0x2c
+ 466 0097 03       		.uleb128 0x3
+ 467 0098 B0020000 		.4byte	.LASF13
+ 468 009c 03       		.byte	0x3
+ 469 009d 36       		.byte	0x36
+ 470 009e 45000000 		.4byte	0x45
+ 471 00a2 03       		.uleb128 0x3
+ 472 00a3 C5020000 		.4byte	.LASF14
+ 473 00a7 03       		.byte	0x3
+ 474 00a8 42       		.byte	0x42
+ 475 00a9 5E000000 		.4byte	0x5e
+ 476 00ad 02       		.uleb128 0x2
+ 477 00ae 04       		.byte	0x4
+ 478 00af 07       		.byte	0x7
+ 479 00b0 05020000 		.4byte	.LASF15
+ 480 00b4 05       		.uleb128 0x5
+ 481 00b5 A2000000 		.4byte	0xa2
+ 482 00b9 06       		.uleb128 0x6
+ 483 00ba 01       		.byte	0x1
+ 484 00bb 04       		.byte	0x4
+ 485 00bc DF       		.byte	0xdf
+ 486 00bd CE000000 		.4byte	0xce
+ 487 00c1 07       		.uleb128 0x7
+ 488 00c2 E8020000 		.4byte	.LASF16
+ 489 00c6 00       		.sleb128 0
+ 490 00c7 08       		.uleb128 0x8
+ 491 00c8 53455400 		.ascii	"SET\000"
+ 492 00cc 01       		.sleb128 1
+ 493 00cd 00       		.byte	0
+ 494 00ce 09       		.uleb128 0x9
+ 495 00cf 24       		.byte	0x24
+ 496 00d0 04       		.byte	0x4
+ 497 00d1 6C01     		.2byte	0x16c
+ 498 00d3 5C010000 		.4byte	0x15c
+ARM GAS  /tmp/ccBphW2A.s 			page 16
+
+
+ 499 00d7 0A       		.uleb128 0xa
+ 500 00d8 41435200 		.ascii	"ACR\000"
+ 501 00dc 04       		.byte	0x4
+ 502 00dd 6E01     		.2byte	0x16e
+ 503 00df B4000000 		.4byte	0xb4
+ 504 00e3 02       		.byte	0x2
+ 505 00e4 23       		.byte	0x23
+ 506 00e5 00       		.uleb128 0
+ 507 00e6 0B       		.uleb128 0xb
+ 508 00e7 D7020000 		.4byte	.LASF17
+ 509 00eb 04       		.byte	0x4
+ 510 00ec 6F01     		.2byte	0x16f
+ 511 00ee B4000000 		.4byte	0xb4
+ 512 00f2 02       		.byte	0x2
+ 513 00f3 23       		.byte	0x23
+ 514 00f4 04       		.uleb128 0x4
+ 515 00f5 0B       		.uleb128 0xb
+ 516 00f6 AD000000 		.4byte	.LASF18
+ 517 00fa 04       		.byte	0x4
+ 518 00fb 7001     		.2byte	0x170
+ 519 00fd B4000000 		.4byte	0xb4
+ 520 0101 02       		.byte	0x2
+ 521 0102 23       		.byte	0x23
+ 522 0103 08       		.uleb128 0x8
+ 523 0104 0A       		.uleb128 0xa
+ 524 0105 535200   		.ascii	"SR\000"
+ 525 0108 04       		.byte	0x4
+ 526 0109 7101     		.2byte	0x171
+ 527 010b B4000000 		.4byte	0xb4
+ 528 010f 02       		.byte	0x2
+ 529 0110 23       		.byte	0x23
+ 530 0111 0C       		.uleb128 0xc
+ 531 0112 0A       		.uleb128 0xa
+ 532 0113 435200   		.ascii	"CR\000"
+ 533 0116 04       		.byte	0x4
+ 534 0117 7201     		.2byte	0x172
+ 535 0119 B4000000 		.4byte	0xb4
+ 536 011d 02       		.byte	0x2
+ 537 011e 23       		.byte	0x23
+ 538 011f 10       		.uleb128 0x10
+ 539 0120 0A       		.uleb128 0xa
+ 540 0121 415200   		.ascii	"AR\000"
+ 541 0124 04       		.byte	0x4
+ 542 0125 7301     		.2byte	0x173
+ 543 0127 B4000000 		.4byte	0xb4
+ 544 012b 02       		.byte	0x2
+ 545 012c 23       		.byte	0x23
+ 546 012d 14       		.uleb128 0x14
+ 547 012e 0B       		.uleb128 0xb
+ 548 012f D1000000 		.4byte	.LASF19
+ 549 0133 04       		.byte	0x4
+ 550 0134 7401     		.2byte	0x174
+ 551 0136 B4000000 		.4byte	0xb4
+ 552 013a 02       		.byte	0x2
+ 553 013b 23       		.byte	0x23
+ 554 013c 18       		.uleb128 0x18
+ 555 013d 0A       		.uleb128 0xa
+ARM GAS  /tmp/ccBphW2A.s 			page 17
+
+
+ 556 013e 4F425200 		.ascii	"OBR\000"
+ 557 0142 04       		.byte	0x4
+ 558 0143 7501     		.2byte	0x175
+ 559 0145 B4000000 		.4byte	0xb4
+ 560 0149 02       		.byte	0x2
+ 561 014a 23       		.byte	0x23
+ 562 014b 1C       		.uleb128 0x1c
+ 563 014c 0B       		.uleb128 0xb
+ 564 014d 61000000 		.4byte	.LASF20
+ 565 0151 04       		.byte	0x4
+ 566 0152 7601     		.2byte	0x176
+ 567 0154 B4000000 		.4byte	0xb4
+ 568 0158 02       		.byte	0x2
+ 569 0159 23       		.byte	0x23
+ 570 015a 20       		.uleb128 0x20
+ 571 015b 00       		.byte	0
+ 572 015c 0C       		.uleb128 0xc
+ 573 015d 42000000 		.4byte	.LASF21
+ 574 0161 04       		.byte	0x4
+ 575 0162 7701     		.2byte	0x177
+ 576 0164 CE000000 		.4byte	0xce
+ 577 0168 09       		.uleb128 0x9
+ 578 0169 38       		.byte	0x38
+ 579 016a 04       		.byte	0x4
+ 580 016b D801     		.2byte	0x1d8
+ 581 016d 43020000 		.4byte	0x243
+ 582 0171 0A       		.uleb128 0xa
+ 583 0172 435200   		.ascii	"CR\000"
+ 584 0175 04       		.byte	0x4
+ 585 0176 DA01     		.2byte	0x1da
+ 586 0178 B4000000 		.4byte	0xb4
+ 587 017c 02       		.byte	0x2
+ 588 017d 23       		.byte	0x23
+ 589 017e 00       		.uleb128 0
+ 590 017f 0B       		.uleb128 0xb
+ 591 0180 21000000 		.4byte	.LASF22
+ 592 0184 04       		.byte	0x4
+ 593 0185 DB01     		.2byte	0x1db
+ 594 0187 B4000000 		.4byte	0xb4
+ 595 018b 02       		.byte	0x2
+ 596 018c 23       		.byte	0x23
+ 597 018d 04       		.uleb128 0x4
+ 598 018e 0A       		.uleb128 0xa
+ 599 018f 43495200 		.ascii	"CIR\000"
+ 600 0193 04       		.byte	0x4
+ 601 0194 DC01     		.2byte	0x1dc
+ 602 0196 B4000000 		.4byte	0xb4
+ 603 019a 02       		.byte	0x2
+ 604 019b 23       		.byte	0x23
+ 605 019c 08       		.uleb128 0x8
+ 606 019d 0B       		.uleb128 0xb
+ 607 019e 2D010000 		.4byte	.LASF23
+ 608 01a2 04       		.byte	0x4
+ 609 01a3 DD01     		.2byte	0x1dd
+ 610 01a5 B4000000 		.4byte	0xb4
+ 611 01a9 02       		.byte	0x2
+ 612 01aa 23       		.byte	0x23
+ARM GAS  /tmp/ccBphW2A.s 			page 18
+
+
+ 613 01ab 0C       		.uleb128 0xc
+ 614 01ac 0B       		.uleb128 0xb
+ 615 01ad DA000000 		.4byte	.LASF24
+ 616 01b1 04       		.byte	0x4
+ 617 01b2 DE01     		.2byte	0x1de
+ 618 01b4 B4000000 		.4byte	0xb4
+ 619 01b8 02       		.byte	0x2
+ 620 01b9 23       		.byte	0x23
+ 621 01ba 10       		.uleb128 0x10
+ 622 01bb 0B       		.uleb128 0xb
+ 623 01bc 50000000 		.4byte	.LASF25
+ 624 01c0 04       		.byte	0x4
+ 625 01c1 DF01     		.2byte	0x1df
+ 626 01c3 B4000000 		.4byte	0xb4
+ 627 01c7 02       		.byte	0x2
+ 628 01c8 23       		.byte	0x23
+ 629 01c9 14       		.uleb128 0x14
+ 630 01ca 0B       		.uleb128 0xb
+ 631 01cb 6C000000 		.4byte	.LASF26
+ 632 01cf 04       		.byte	0x4
+ 633 01d0 E001     		.2byte	0x1e0
+ 634 01d2 B4000000 		.4byte	0xb4
+ 635 01d6 02       		.byte	0x2
+ 636 01d7 23       		.byte	0x23
+ 637 01d8 18       		.uleb128 0x18
+ 638 01d9 0B       		.uleb128 0xb
+ 639 01da 25010000 		.4byte	.LASF27
+ 640 01de 04       		.byte	0x4
+ 641 01df E101     		.2byte	0x1e1
+ 642 01e1 B4000000 		.4byte	0xb4
+ 643 01e5 02       		.byte	0x2
+ 644 01e6 23       		.byte	0x23
+ 645 01e7 1C       		.uleb128 0x1c
+ 646 01e8 0B       		.uleb128 0xb
+ 647 01e9 F5010000 		.4byte	.LASF28
+ 648 01ed 04       		.byte	0x4
+ 649 01ee E201     		.2byte	0x1e2
+ 650 01f0 B4000000 		.4byte	0xb4
+ 651 01f4 02       		.byte	0x2
+ 652 01f5 23       		.byte	0x23
+ 653 01f6 20       		.uleb128 0x20
+ 654 01f7 0A       		.uleb128 0xa
+ 655 01f8 43535200 		.ascii	"CSR\000"
+ 656 01fc 04       		.byte	0x4
+ 657 01fd E301     		.2byte	0x1e3
+ 658 01ff B4000000 		.4byte	0xb4
+ 659 0203 02       		.byte	0x2
+ 660 0204 23       		.byte	0x23
+ 661 0205 24       		.uleb128 0x24
+ 662 0206 0B       		.uleb128 0xb
+ 663 0207 30000000 		.4byte	.LASF29
+ 664 020b 04       		.byte	0x4
+ 665 020c E401     		.2byte	0x1e4
+ 666 020e B4000000 		.4byte	0xb4
+ 667 0212 02       		.byte	0x2
+ 668 0213 23       		.byte	0x23
+ 669 0214 28       		.uleb128 0x28
+ARM GAS  /tmp/ccBphW2A.s 			page 19
+
+
+ 670 0215 0B       		.uleb128 0xb
+ 671 0216 66000000 		.4byte	.LASF30
+ 672 021a 04       		.byte	0x4
+ 673 021b E501     		.2byte	0x1e5
+ 674 021d B4000000 		.4byte	0xb4
+ 675 0221 02       		.byte	0x2
+ 676 0222 23       		.byte	0x23
+ 677 0223 2C       		.uleb128 0x2c
+ 678 0224 0B       		.uleb128 0xb
+ 679 0225 94000000 		.4byte	.LASF31
+ 680 0229 04       		.byte	0x4
+ 681 022a E601     		.2byte	0x1e6
+ 682 022c B4000000 		.4byte	0xb4
+ 683 0230 02       		.byte	0x2
+ 684 0231 23       		.byte	0x23
+ 685 0232 30       		.uleb128 0x30
+ 686 0233 0A       		.uleb128 0xa
+ 687 0234 43523200 		.ascii	"CR2\000"
+ 688 0238 04       		.byte	0x4
+ 689 0239 E701     		.2byte	0x1e7
+ 690 023b B4000000 		.4byte	0xb4
+ 691 023f 02       		.byte	0x2
+ 692 0240 23       		.byte	0x23
+ 693 0241 34       		.uleb128 0x34
+ 694 0242 00       		.byte	0
+ 695 0243 0C       		.uleb128 0xc
+ 696 0244 B9020000 		.4byte	.LASF32
+ 697 0248 04       		.byte	0x4
+ 698 0249 E801     		.2byte	0x1e8
+ 699 024b 68010000 		.4byte	0x168
+ 700 024f 0D       		.uleb128 0xd
+ 701 0250 E9010000 		.4byte	.LASF45
+ 702 0254 01       		.byte	0x1
+ 703 0255 1701     		.2byte	0x117
+ 704 0257 01       		.byte	0x1
+ 705 0258 01       		.byte	0x1
+ 706 0259 76020000 		.4byte	0x276
+ 707 025d 0E       		.uleb128 0xe
+ 708 025e 12000000 		.4byte	.LASF33
+ 709 0262 01       		.byte	0x1
+ 710 0263 1901     		.2byte	0x119
+ 711 0265 B4000000 		.4byte	0xb4
+ 712 0269 0E       		.uleb128 0xe
+ 713 026a 38000000 		.4byte	.LASF34
+ 714 026e 01       		.byte	0x1
+ 715 026f 1901     		.2byte	0x119
+ 716 0271 B4000000 		.4byte	0xb4
+ 717 0275 00       		.byte	0
+ 718 0276 0F       		.uleb128 0xf
+ 719 0277 01       		.byte	0x1
+ 720 0278 FA010000 		.4byte	.LASF35
+ 721 027c 01       		.byte	0x1
+ 722 027d 9F       		.byte	0x9f
+ 723 027e 01       		.byte	0x1
+ 724 027f 00000000 		.4byte	.LFB32
+ 725 0283 EC000000 		.4byte	.LFE32
+ 726 0287 00000000 		.4byte	.LLST0
+ARM GAS  /tmp/ccBphW2A.s 			page 20
+
+
+ 727 028b 01       		.byte	0x1
+ 728 028c BB020000 		.4byte	0x2bb
+ 729 0290 10       		.uleb128 0x10
+ 730 0291 4F020000 		.4byte	0x24f
+ 731 0295 46000000 		.4byte	.LBB4
+ 732 0299 CE000000 		.4byte	.LBE4
+ 733 029d 01       		.byte	0x1
+ 734 029e BD       		.byte	0xbd
+ 735 029f 11       		.uleb128 0x11
+ 736 02a0 46000000 		.4byte	.LBB5
+ 737 02a4 CE000000 		.4byte	.LBE5
+ 738 02a8 12       		.uleb128 0x12
+ 739 02a9 5D020000 		.4byte	0x25d
+ 740 02ad 02       		.byte	0x2
+ 741 02ae 91       		.byte	0x91
+ 742 02af 70       		.sleb128 -16
+ 743 02b0 12       		.uleb128 0x12
+ 744 02b1 69020000 		.4byte	0x269
+ 745 02b5 02       		.byte	0x2
+ 746 02b6 91       		.byte	0x91
+ 747 02b7 74       		.sleb128 -12
+ 748 02b8 00       		.byte	0
+ 749 02b9 00       		.byte	0
+ 750 02ba 00       		.byte	0
+ 751 02bb 13       		.uleb128 0x13
+ 752 02bc 01       		.byte	0x1
+ 753 02bd 2C020000 		.4byte	.LASF36
+ 754 02c1 01       		.byte	0x1
+ 755 02c2 E3       		.byte	0xe3
+ 756 02c3 01       		.byte	0x1
+ 757 02c4 EC000000 		.4byte	.LFB33
+ 758 02c8 50010000 		.4byte	.LFE33
+ 759 02cc 20000000 		.4byte	.LLST1
+ 760 02d0 01       		.byte	0x1
+ 761 02d1 12030000 		.4byte	0x312
+ 762 02d5 14       		.uleb128 0x14
+ 763 02d6 746D7000 		.ascii	"tmp\000"
+ 764 02da 01       		.byte	0x1
+ 765 02db E5       		.byte	0xe5
+ 766 02dc A2000000 		.4byte	0xa2
+ 767 02e0 40000000 		.4byte	.LLST2
+ 768 02e4 15       		.uleb128 0x15
+ 769 02e5 00000000 		.4byte	.LASF37
+ 770 02e9 01       		.byte	0x1
+ 771 02ea E5       		.byte	0xe5
+ 772 02eb A2000000 		.4byte	0xa2
+ 773 02ef A7000000 		.4byte	.LLST3
+ 774 02f3 15       		.uleb128 0x15
+ 775 02f4 26000000 		.4byte	.LASF38
+ 776 02f8 01       		.byte	0x1
+ 777 02f9 E5       		.byte	0xe5
+ 778 02fa A2000000 		.4byte	0xa2
+ 779 02fe E2000000 		.4byte	.LLST4
+ 780 0302 15       		.uleb128 0x15
+ 781 0303 C3000000 		.4byte	.LASF39
+ 782 0307 01       		.byte	0x1
+ 783 0308 E5       		.byte	0xe5
+ARM GAS  /tmp/ccBphW2A.s 			page 21
+
+
+ 784 0309 A2000000 		.4byte	0xa2
+ 785 030d 18010000 		.4byte	.LLST5
+ 786 0311 00       		.byte	0
+ 787 0312 16       		.uleb128 0x16
+ 788 0313 1C020000 		.4byte	.LASF40
+ 789 0317 01       		.byte	0x1
+ 790 0318 83       		.byte	0x83
+ 791 0319 A2000000 		.4byte	0xa2
+ 792 031d 01       		.byte	0x1
+ 793 031e 05       		.byte	0x5
+ 794 031f 03       		.byte	0x3
+ 795 0320 00000000 		.4byte	SystemCoreClock
+ 796 0324 17       		.uleb128 0x17
+ 797 0325 8C000000 		.4byte	0x8c
+ 798 0329 34030000 		.4byte	0x334
+ 799 032d 18       		.uleb128 0x18
+ 800 032e AD000000 		.4byte	0xad
+ 801 0332 0F       		.byte	0xf
+ 802 0333 00       		.byte	0
+ 803 0334 16       		.uleb128 0x16
+ 804 0335 74000000 		.4byte	.LASF41
+ 805 0339 01       		.byte	0x1
+ 806 033a 84       		.byte	0x84
+ 807 033b 46030000 		.4byte	0x346
+ 808 033f 01       		.byte	0x1
+ 809 0340 05       		.byte	0x5
+ 810 0341 03       		.byte	0x3
+ 811 0342 00000000 		.4byte	AHBPrescTable
+ 812 0346 19       		.uleb128 0x19
+ 813 0347 4B030000 		.4byte	0x34b
+ 814 034b 05       		.uleb128 0x5
+ 815 034c 24030000 		.4byte	0x324
+ 816 0350 00       		.byte	0
+ 817              		.section	.debug_abbrev,"",%progbits
+ 818              	.Ldebug_abbrev0:
+ 819 0000 01       		.uleb128 0x1
+ 820 0001 11       		.uleb128 0x11
+ 821 0002 01       		.byte	0x1
+ 822 0003 25       		.uleb128 0x25
+ 823 0004 0E       		.uleb128 0xe
+ 824 0005 13       		.uleb128 0x13
+ 825 0006 0B       		.uleb128 0xb
+ 826 0007 03       		.uleb128 0x3
+ 827 0008 0E       		.uleb128 0xe
+ 828 0009 1B       		.uleb128 0x1b
+ 829 000a 0E       		.uleb128 0xe
+ 830 000b 11       		.uleb128 0x11
+ 831 000c 01       		.uleb128 0x1
+ 832 000d 12       		.uleb128 0x12
+ 833 000e 01       		.uleb128 0x1
+ 834 000f 10       		.uleb128 0x10
+ 835 0010 06       		.uleb128 0x6
+ 836 0011 00       		.byte	0
+ 837 0012 00       		.byte	0
+ 838 0013 02       		.uleb128 0x2
+ 839 0014 24       		.uleb128 0x24
+ 840 0015 00       		.byte	0
+ARM GAS  /tmp/ccBphW2A.s 			page 22
+
+
+ 841 0016 0B       		.uleb128 0xb
+ 842 0017 0B       		.uleb128 0xb
+ 843 0018 3E       		.uleb128 0x3e
+ 844 0019 0B       		.uleb128 0xb
+ 845 001a 03       		.uleb128 0x3
+ 846 001b 0E       		.uleb128 0xe
+ 847 001c 00       		.byte	0
+ 848 001d 00       		.byte	0
+ 849 001e 03       		.uleb128 0x3
+ 850 001f 16       		.uleb128 0x16
+ 851 0020 00       		.byte	0
+ 852 0021 03       		.uleb128 0x3
+ 853 0022 0E       		.uleb128 0xe
+ 854 0023 3A       		.uleb128 0x3a
+ 855 0024 0B       		.uleb128 0xb
+ 856 0025 3B       		.uleb128 0x3b
+ 857 0026 0B       		.uleb128 0xb
+ 858 0027 49       		.uleb128 0x49
+ 859 0028 13       		.uleb128 0x13
+ 860 0029 00       		.byte	0
+ 861 002a 00       		.byte	0
+ 862 002b 04       		.uleb128 0x4
+ 863 002c 24       		.uleb128 0x24
+ 864 002d 00       		.byte	0
+ 865 002e 0B       		.uleb128 0xb
+ 866 002f 0B       		.uleb128 0xb
+ 867 0030 3E       		.uleb128 0x3e
+ 868 0031 0B       		.uleb128 0xb
+ 869 0032 03       		.uleb128 0x3
+ 870 0033 08       		.uleb128 0x8
+ 871 0034 00       		.byte	0
+ 872 0035 00       		.byte	0
+ 873 0036 05       		.uleb128 0x5
+ 874 0037 35       		.uleb128 0x35
+ 875 0038 00       		.byte	0
+ 876 0039 49       		.uleb128 0x49
+ 877 003a 13       		.uleb128 0x13
+ 878 003b 00       		.byte	0
+ 879 003c 00       		.byte	0
+ 880 003d 06       		.uleb128 0x6
+ 881 003e 04       		.uleb128 0x4
+ 882 003f 01       		.byte	0x1
+ 883 0040 0B       		.uleb128 0xb
+ 884 0041 0B       		.uleb128 0xb
+ 885 0042 3A       		.uleb128 0x3a
+ 886 0043 0B       		.uleb128 0xb
+ 887 0044 3B       		.uleb128 0x3b
+ 888 0045 0B       		.uleb128 0xb
+ 889 0046 01       		.uleb128 0x1
+ 890 0047 13       		.uleb128 0x13
+ 891 0048 00       		.byte	0
+ 892 0049 00       		.byte	0
+ 893 004a 07       		.uleb128 0x7
+ 894 004b 28       		.uleb128 0x28
+ 895 004c 00       		.byte	0
+ 896 004d 03       		.uleb128 0x3
+ 897 004e 0E       		.uleb128 0xe
+ARM GAS  /tmp/ccBphW2A.s 			page 23
+
+
+ 898 004f 1C       		.uleb128 0x1c
+ 899 0050 0D       		.uleb128 0xd
+ 900 0051 00       		.byte	0
+ 901 0052 00       		.byte	0
+ 902 0053 08       		.uleb128 0x8
+ 903 0054 28       		.uleb128 0x28
+ 904 0055 00       		.byte	0
+ 905 0056 03       		.uleb128 0x3
+ 906 0057 08       		.uleb128 0x8
+ 907 0058 1C       		.uleb128 0x1c
+ 908 0059 0D       		.uleb128 0xd
+ 909 005a 00       		.byte	0
+ 910 005b 00       		.byte	0
+ 911 005c 09       		.uleb128 0x9
+ 912 005d 13       		.uleb128 0x13
+ 913 005e 01       		.byte	0x1
+ 914 005f 0B       		.uleb128 0xb
+ 915 0060 0B       		.uleb128 0xb
+ 916 0061 3A       		.uleb128 0x3a
+ 917 0062 0B       		.uleb128 0xb
+ 918 0063 3B       		.uleb128 0x3b
+ 919 0064 05       		.uleb128 0x5
+ 920 0065 01       		.uleb128 0x1
+ 921 0066 13       		.uleb128 0x13
+ 922 0067 00       		.byte	0
+ 923 0068 00       		.byte	0
+ 924 0069 0A       		.uleb128 0xa
+ 925 006a 0D       		.uleb128 0xd
+ 926 006b 00       		.byte	0
+ 927 006c 03       		.uleb128 0x3
+ 928 006d 08       		.uleb128 0x8
+ 929 006e 3A       		.uleb128 0x3a
+ 930 006f 0B       		.uleb128 0xb
+ 931 0070 3B       		.uleb128 0x3b
+ 932 0071 05       		.uleb128 0x5
+ 933 0072 49       		.uleb128 0x49
+ 934 0073 13       		.uleb128 0x13
+ 935 0074 38       		.uleb128 0x38
+ 936 0075 0A       		.uleb128 0xa
+ 937 0076 00       		.byte	0
+ 938 0077 00       		.byte	0
+ 939 0078 0B       		.uleb128 0xb
+ 940 0079 0D       		.uleb128 0xd
+ 941 007a 00       		.byte	0
+ 942 007b 03       		.uleb128 0x3
+ 943 007c 0E       		.uleb128 0xe
+ 944 007d 3A       		.uleb128 0x3a
+ 945 007e 0B       		.uleb128 0xb
+ 946 007f 3B       		.uleb128 0x3b
+ 947 0080 05       		.uleb128 0x5
+ 948 0081 49       		.uleb128 0x49
+ 949 0082 13       		.uleb128 0x13
+ 950 0083 38       		.uleb128 0x38
+ 951 0084 0A       		.uleb128 0xa
+ 952 0085 00       		.byte	0
+ 953 0086 00       		.byte	0
+ 954 0087 0C       		.uleb128 0xc
+ARM GAS  /tmp/ccBphW2A.s 			page 24
+
+
+ 955 0088 16       		.uleb128 0x16
+ 956 0089 00       		.byte	0
+ 957 008a 03       		.uleb128 0x3
+ 958 008b 0E       		.uleb128 0xe
+ 959 008c 3A       		.uleb128 0x3a
+ 960 008d 0B       		.uleb128 0xb
+ 961 008e 3B       		.uleb128 0x3b
+ 962 008f 05       		.uleb128 0x5
+ 963 0090 49       		.uleb128 0x49
+ 964 0091 13       		.uleb128 0x13
+ 965 0092 00       		.byte	0
+ 966 0093 00       		.byte	0
+ 967 0094 0D       		.uleb128 0xd
+ 968 0095 2E       		.uleb128 0x2e
+ 969 0096 01       		.byte	0x1
+ 970 0097 03       		.uleb128 0x3
+ 971 0098 0E       		.uleb128 0xe
+ 972 0099 3A       		.uleb128 0x3a
+ 973 009a 0B       		.uleb128 0xb
+ 974 009b 3B       		.uleb128 0x3b
+ 975 009c 05       		.uleb128 0x5
+ 976 009d 27       		.uleb128 0x27
+ 977 009e 0C       		.uleb128 0xc
+ 978 009f 20       		.uleb128 0x20
+ 979 00a0 0B       		.uleb128 0xb
+ 980 00a1 01       		.uleb128 0x1
+ 981 00a2 13       		.uleb128 0x13
+ 982 00a3 00       		.byte	0
+ 983 00a4 00       		.byte	0
+ 984 00a5 0E       		.uleb128 0xe
+ 985 00a6 34       		.uleb128 0x34
+ 986 00a7 00       		.byte	0
+ 987 00a8 03       		.uleb128 0x3
+ 988 00a9 0E       		.uleb128 0xe
+ 989 00aa 3A       		.uleb128 0x3a
+ 990 00ab 0B       		.uleb128 0xb
+ 991 00ac 3B       		.uleb128 0x3b
+ 992 00ad 05       		.uleb128 0x5
+ 993 00ae 49       		.uleb128 0x49
+ 994 00af 13       		.uleb128 0x13
+ 995 00b0 00       		.byte	0
+ 996 00b1 00       		.byte	0
+ 997 00b2 0F       		.uleb128 0xf
+ 998 00b3 2E       		.uleb128 0x2e
+ 999 00b4 01       		.byte	0x1
+ 1000 00b5 3F       		.uleb128 0x3f
+ 1001 00b6 0C       		.uleb128 0xc
+ 1002 00b7 03       		.uleb128 0x3
+ 1003 00b8 0E       		.uleb128 0xe
+ 1004 00b9 3A       		.uleb128 0x3a
+ 1005 00ba 0B       		.uleb128 0xb
+ 1006 00bb 3B       		.uleb128 0x3b
+ 1007 00bc 0B       		.uleb128 0xb
+ 1008 00bd 27       		.uleb128 0x27
+ 1009 00be 0C       		.uleb128 0xc
+ 1010 00bf 11       		.uleb128 0x11
+ 1011 00c0 01       		.uleb128 0x1
+ARM GAS  /tmp/ccBphW2A.s 			page 25
+
+
+ 1012 00c1 12       		.uleb128 0x12
+ 1013 00c2 01       		.uleb128 0x1
+ 1014 00c3 40       		.uleb128 0x40
+ 1015 00c4 06       		.uleb128 0x6
+ 1016 00c5 9742     		.uleb128 0x2117
+ 1017 00c7 0C       		.uleb128 0xc
+ 1018 00c8 01       		.uleb128 0x1
+ 1019 00c9 13       		.uleb128 0x13
+ 1020 00ca 00       		.byte	0
+ 1021 00cb 00       		.byte	0
+ 1022 00cc 10       		.uleb128 0x10
+ 1023 00cd 1D       		.uleb128 0x1d
+ 1024 00ce 01       		.byte	0x1
+ 1025 00cf 31       		.uleb128 0x31
+ 1026 00d0 13       		.uleb128 0x13
+ 1027 00d1 11       		.uleb128 0x11
+ 1028 00d2 01       		.uleb128 0x1
+ 1029 00d3 12       		.uleb128 0x12
+ 1030 00d4 01       		.uleb128 0x1
+ 1031 00d5 58       		.uleb128 0x58
+ 1032 00d6 0B       		.uleb128 0xb
+ 1033 00d7 59       		.uleb128 0x59
+ 1034 00d8 0B       		.uleb128 0xb
+ 1035 00d9 00       		.byte	0
+ 1036 00da 00       		.byte	0
+ 1037 00db 11       		.uleb128 0x11
+ 1038 00dc 0B       		.uleb128 0xb
+ 1039 00dd 01       		.byte	0x1
+ 1040 00de 11       		.uleb128 0x11
+ 1041 00df 01       		.uleb128 0x1
+ 1042 00e0 12       		.uleb128 0x12
+ 1043 00e1 01       		.uleb128 0x1
+ 1044 00e2 00       		.byte	0
+ 1045 00e3 00       		.byte	0
+ 1046 00e4 12       		.uleb128 0x12
+ 1047 00e5 34       		.uleb128 0x34
+ 1048 00e6 00       		.byte	0
+ 1049 00e7 31       		.uleb128 0x31
+ 1050 00e8 13       		.uleb128 0x13
+ 1051 00e9 02       		.uleb128 0x2
+ 1052 00ea 0A       		.uleb128 0xa
+ 1053 00eb 00       		.byte	0
+ 1054 00ec 00       		.byte	0
+ 1055 00ed 13       		.uleb128 0x13
+ 1056 00ee 2E       		.uleb128 0x2e
+ 1057 00ef 01       		.byte	0x1
+ 1058 00f0 3F       		.uleb128 0x3f
+ 1059 00f1 0C       		.uleb128 0xc
+ 1060 00f2 03       		.uleb128 0x3
+ 1061 00f3 0E       		.uleb128 0xe
+ 1062 00f4 3A       		.uleb128 0x3a
+ 1063 00f5 0B       		.uleb128 0xb
+ 1064 00f6 3B       		.uleb128 0x3b
+ 1065 00f7 0B       		.uleb128 0xb
+ 1066 00f8 27       		.uleb128 0x27
+ 1067 00f9 0C       		.uleb128 0xc
+ 1068 00fa 11       		.uleb128 0x11
+ARM GAS  /tmp/ccBphW2A.s 			page 26
+
+
+ 1069 00fb 01       		.uleb128 0x1
+ 1070 00fc 12       		.uleb128 0x12
+ 1071 00fd 01       		.uleb128 0x1
+ 1072 00fe 40       		.uleb128 0x40
+ 1073 00ff 06       		.uleb128 0x6
+ 1074 0100 9642     		.uleb128 0x2116
+ 1075 0102 0C       		.uleb128 0xc
+ 1076 0103 01       		.uleb128 0x1
+ 1077 0104 13       		.uleb128 0x13
+ 1078 0105 00       		.byte	0
+ 1079 0106 00       		.byte	0
+ 1080 0107 14       		.uleb128 0x14
+ 1081 0108 34       		.uleb128 0x34
+ 1082 0109 00       		.byte	0
+ 1083 010a 03       		.uleb128 0x3
+ 1084 010b 08       		.uleb128 0x8
+ 1085 010c 3A       		.uleb128 0x3a
+ 1086 010d 0B       		.uleb128 0xb
+ 1087 010e 3B       		.uleb128 0x3b
+ 1088 010f 0B       		.uleb128 0xb
+ 1089 0110 49       		.uleb128 0x49
+ 1090 0111 13       		.uleb128 0x13
+ 1091 0112 02       		.uleb128 0x2
+ 1092 0113 06       		.uleb128 0x6
+ 1093 0114 00       		.byte	0
+ 1094 0115 00       		.byte	0
+ 1095 0116 15       		.uleb128 0x15
+ 1096 0117 34       		.uleb128 0x34
+ 1097 0118 00       		.byte	0
+ 1098 0119 03       		.uleb128 0x3
+ 1099 011a 0E       		.uleb128 0xe
+ 1100 011b 3A       		.uleb128 0x3a
+ 1101 011c 0B       		.uleb128 0xb
+ 1102 011d 3B       		.uleb128 0x3b
+ 1103 011e 0B       		.uleb128 0xb
+ 1104 011f 49       		.uleb128 0x49
+ 1105 0120 13       		.uleb128 0x13
+ 1106 0121 02       		.uleb128 0x2
+ 1107 0122 06       		.uleb128 0x6
+ 1108 0123 00       		.byte	0
+ 1109 0124 00       		.byte	0
+ 1110 0125 16       		.uleb128 0x16
+ 1111 0126 34       		.uleb128 0x34
+ 1112 0127 00       		.byte	0
+ 1113 0128 03       		.uleb128 0x3
+ 1114 0129 0E       		.uleb128 0xe
+ 1115 012a 3A       		.uleb128 0x3a
+ 1116 012b 0B       		.uleb128 0xb
+ 1117 012c 3B       		.uleb128 0x3b
+ 1118 012d 0B       		.uleb128 0xb
+ 1119 012e 49       		.uleb128 0x49
+ 1120 012f 13       		.uleb128 0x13
+ 1121 0130 3F       		.uleb128 0x3f
+ 1122 0131 0C       		.uleb128 0xc
+ 1123 0132 02       		.uleb128 0x2
+ 1124 0133 0A       		.uleb128 0xa
+ 1125 0134 00       		.byte	0
+ARM GAS  /tmp/ccBphW2A.s 			page 27
+
+
+ 1126 0135 00       		.byte	0
+ 1127 0136 17       		.uleb128 0x17
+ 1128 0137 01       		.uleb128 0x1
+ 1129 0138 01       		.byte	0x1
+ 1130 0139 49       		.uleb128 0x49
+ 1131 013a 13       		.uleb128 0x13
+ 1132 013b 01       		.uleb128 0x1
+ 1133 013c 13       		.uleb128 0x13
+ 1134 013d 00       		.byte	0
+ 1135 013e 00       		.byte	0
+ 1136 013f 18       		.uleb128 0x18
+ 1137 0140 21       		.uleb128 0x21
+ 1138 0141 00       		.byte	0
+ 1139 0142 49       		.uleb128 0x49
+ 1140 0143 13       		.uleb128 0x13
+ 1141 0144 2F       		.uleb128 0x2f
+ 1142 0145 0B       		.uleb128 0xb
+ 1143 0146 00       		.byte	0
+ 1144 0147 00       		.byte	0
+ 1145 0148 19       		.uleb128 0x19
+ 1146 0149 26       		.uleb128 0x26
+ 1147 014a 00       		.byte	0
+ 1148 014b 49       		.uleb128 0x49
+ 1149 014c 13       		.uleb128 0x13
+ 1150 014d 00       		.byte	0
+ 1151 014e 00       		.byte	0
+ 1152 014f 00       		.byte	0
+ 1153              		.section	.debug_loc,"",%progbits
+ 1154              	.Ldebug_loc0:
+ 1155              	.LLST0:
+ 1156 0000 00000000 		.4byte	.LFB32-.Ltext0
+ 1157 0004 04000000 		.4byte	.LCFI0-.Ltext0
+ 1158 0008 0200     		.2byte	0x2
+ 1159 000a 7D       		.byte	0x7d
+ 1160 000b 00       		.sleb128 0
+ 1161 000c 04000000 		.4byte	.LCFI0-.Ltext0
+ 1162 0010 EC000000 		.4byte	.LFE32-.Ltext0
+ 1163 0014 0200     		.2byte	0x2
+ 1164 0016 7D       		.byte	0x7d
+ 1165 0017 10       		.sleb128 16
+ 1166 0018 00000000 		.4byte	0
+ 1167 001c 00000000 		.4byte	0
+ 1168              	.LLST1:
+ 1169 0020 EC000000 		.4byte	.LFB33-.Ltext0
+ 1170 0024 EE000000 		.4byte	.LCFI1-.Ltext0
+ 1171 0028 0200     		.2byte	0x2
+ 1172 002a 7D       		.byte	0x7d
+ 1173 002b 00       		.sleb128 0
+ 1174 002c EE000000 		.4byte	.LCFI1-.Ltext0
+ 1175 0030 50010000 		.4byte	.LFE33-.Ltext0
+ 1176 0034 0200     		.2byte	0x2
+ 1177 0036 7D       		.byte	0x7d
+ 1178 0037 10       		.sleb128 16
+ 1179 0038 00000000 		.4byte	0
+ 1180 003c 00000000 		.4byte	0
+ 1181              	.LLST2:
+ 1182 0040 EC000000 		.4byte	.LVL0-.Ltext0
+ARM GAS  /tmp/ccBphW2A.s 			page 28
+
+
+ 1183 0044 F4000000 		.4byte	.LVL1-.Ltext0
+ 1184 0048 0200     		.2byte	0x2
+ 1185 004a 30       		.byte	0x30
+ 1186 004b 9F       		.byte	0x9f
+ 1187 004c F4000000 		.4byte	.LVL1-.Ltext0
+ 1188 0050 F8000000 		.4byte	.LVL2-.Ltext0
+ 1189 0054 0500     		.2byte	0x5
+ 1190 0056 72       		.byte	0x72
+ 1191 0057 00       		.sleb128 0
+ 1192 0058 3C       		.byte	0x3c
+ 1193 0059 1A       		.byte	0x1a
+ 1194 005a 9F       		.byte	0x9f
+ 1195 005b F8000000 		.4byte	.LVL2-.Ltext0
+ 1196 005f 02010000 		.4byte	.LVL3-.Ltext0
+ 1197 0063 0100     		.2byte	0x1
+ 1198 0065 53       		.byte	0x53
+ 1199 0066 02010000 		.4byte	.LVL3-.Ltext0
+ 1200 006a 06010000 		.4byte	.LVL4-.Ltext0
+ 1201 006e 0500     		.2byte	0x5
+ 1202 0070 72       		.byte	0x72
+ 1203 0071 00       		.sleb128 0
+ 1204 0072 3C       		.byte	0x3c
+ 1205 0073 1A       		.byte	0x1a
+ 1206 0074 9F       		.byte	0x9f
+ 1207 0075 06010000 		.4byte	.LVL4-.Ltext0
+ 1208 0079 0A010000 		.4byte	.LVL6-.Ltext0
+ 1209 007d 0100     		.2byte	0x1
+ 1210 007f 53       		.byte	0x53
+ 1211 0080 0A010000 		.4byte	.LVL6-.Ltext0
+ 1212 0084 14010000 		.4byte	.LVL9-.Ltext0
+ 1213 0088 0500     		.2byte	0x5
+ 1214 008a 72       		.byte	0x72
+ 1215 008b 00       		.sleb128 0
+ 1216 008c 3C       		.byte	0x3c
+ 1217 008d 1A       		.byte	0x1a
+ 1218 008e 9F       		.byte	0x9f
+ 1219 008f 38010000 		.4byte	.LVL19-.Ltext0
+ 1220 0093 50010000 		.4byte	.LFE33-.Ltext0
+ 1221 0097 0600     		.2byte	0x6
+ 1222 0099 73       		.byte	0x73
+ 1223 009a 00       		.sleb128 0
+ 1224 009b 08       		.byte	0x8
+ 1225 009c FF       		.byte	0xff
+ 1226 009d 1A       		.byte	0x1a
+ 1227 009e 9F       		.byte	0x9f
+ 1228 009f 00000000 		.4byte	0
+ 1229 00a3 00000000 		.4byte	0
+ 1230              	.LLST3:
+ 1231 00a7 EC000000 		.4byte	.LVL0-.Ltext0
+ 1232 00ab 08010000 		.4byte	.LVL5-.Ltext0
+ 1233 00af 0200     		.2byte	0x2
+ 1234 00b1 30       		.byte	0x30
+ 1235 00b2 9F       		.byte	0x9f
+ 1236 00b3 08010000 		.4byte	.LVL5-.Ltext0
+ 1237 00b7 0C010000 		.4byte	.LVL7-.Ltext0
+ 1238 00bb 0700     		.2byte	0x7
+ 1239 00bd 76       		.byte	0x76
+ARM GAS  /tmp/ccBphW2A.s 			page 29
+
+
+ 1240 00be 00       		.sleb128 0
+ 1241 00bf 4E       		.byte	0x4e
+ 1242 00c0 41       		.byte	0x41
+ 1243 00c1 24       		.byte	0x24
+ 1244 00c2 1A       		.byte	0x1a
+ 1245 00c3 9F       		.byte	0x9f
+ 1246 00c4 10010000 		.4byte	.LVL8-.Ltext0
+ 1247 00c8 18010000 		.4byte	.LVL11-.Ltext0
+ 1248 00cc 0100     		.2byte	0x1
+ 1249 00ce 56       		.byte	0x56
+ 1250 00cf 1A010000 		.4byte	.LVL12-.Ltext0
+ 1251 00d3 2A010000 		.4byte	.LVL18-.Ltext0
+ 1252 00d7 0100     		.2byte	0x1
+ 1253 00d9 56       		.byte	0x56
+ 1254 00da 00000000 		.4byte	0
+ 1255 00de 00000000 		.4byte	0
+ 1256              	.LLST4:
+ 1257 00e2 EC000000 		.4byte	.LVL0-.Ltext0
+ 1258 00e6 0A010000 		.4byte	.LVL6-.Ltext0
+ 1259 00ea 0200     		.2byte	0x2
+ 1260 00ec 30       		.byte	0x30
+ 1261 00ed 9F       		.byte	0x9f
+ 1262 00ee 0A010000 		.4byte	.LVL6-.Ltext0
+ 1263 00f2 16010000 		.4byte	.LVL10-.Ltext0
+ 1264 00f6 0700     		.2byte	0x7
+ 1265 00f8 73       		.byte	0x73
+ 1266 00f9 00       		.sleb128 0
+ 1267 00fa 40       		.byte	0x40
+ 1268 00fb 3C       		.byte	0x3c
+ 1269 00fc 24       		.byte	0x24
+ 1270 00fd 1A       		.byte	0x1a
+ 1271 00fe 9F       		.byte	0x9f
+ 1272 00ff 1A010000 		.4byte	.LVL12-.Ltext0
+ 1273 0103 1E010000 		.4byte	.LVL14-.Ltext0
+ 1274 0107 0700     		.2byte	0x7
+ 1275 0109 73       		.byte	0x73
+ 1276 010a 00       		.sleb128 0
+ 1277 010b 40       		.byte	0x40
+ 1278 010c 3C       		.byte	0x3c
+ 1279 010d 24       		.byte	0x24
+ 1280 010e 1A       		.byte	0x1a
+ 1281 010f 9F       		.byte	0x9f
+ 1282 0110 00000000 		.4byte	0
+ 1283 0114 00000000 		.4byte	0
+ 1284              	.LLST5:
+ 1285 0118 EC000000 		.4byte	.LVL0-.Ltext0
+ 1286 011c 1C010000 		.4byte	.LVL13-.Ltext0
+ 1287 0120 0200     		.2byte	0x2
+ 1288 0122 30       		.byte	0x30
+ 1289 0123 9F       		.byte	0x9f
+ 1290 0124 1C010000 		.4byte	.LVL13-.Ltext0
+ 1291 0128 20010000 		.4byte	.LVL15-.Ltext0
+ 1292 012c 0700     		.2byte	0x7
+ 1293 012e 71       		.byte	0x71
+ 1294 012f 00       		.sleb128 0
+ 1295 0130 3F       		.byte	0x3f
+ 1296 0131 1A       		.byte	0x1a
+ARM GAS  /tmp/ccBphW2A.s 			page 30
+
+
+ 1297 0132 23       		.byte	0x23
+ 1298 0133 01       		.uleb128 0x1
+ 1299 0134 9F       		.byte	0x9f
+ 1300 0135 22010000 		.4byte	.LVL16-.Ltext0
+ 1301 0139 27010000 		.4byte	.LVL17-1-.Ltext0
+ 1302 013d 0100     		.2byte	0x1
+ 1303 013f 51       		.byte	0x51
+ 1304 0140 00000000 		.4byte	0
+ 1305 0144 00000000 		.4byte	0
+ 1306              		.section	.debug_aranges,"",%progbits
+ 1307 0000 1C000000 		.4byte	0x1c
+ 1308 0004 0200     		.2byte	0x2
+ 1309 0006 00000000 		.4byte	.Ldebug_info0
+ 1310 000a 04       		.byte	0x4
+ 1311 000b 00       		.byte	0
+ 1312 000c 0000     		.2byte	0
+ 1313 000e 0000     		.2byte	0
+ 1314 0010 00000000 		.4byte	.Ltext0
+ 1315 0014 50010000 		.4byte	.Letext0-.Ltext0
+ 1316 0018 00000000 		.4byte	0
+ 1317 001c 00000000 		.4byte	0
+ 1318              		.section	.debug_line,"",%progbits
+ 1319              	.Ldebug_line0:
+ 1320 0000 87010000 		.section	.debug_str,"MS",%progbits,1
+ 1320      02002D01 
+ 1320      00000201 
+ 1320      FB0E0D00 
+ 1320      01010101 
+ 1321              	.LASF37:
+ 1322 0000 706C6C6D 		.ascii	"pllmull\000"
+ 1322      756C6C00 
+ 1323              	.LASF3:
+ 1324 0008 5F5F7569 		.ascii	"__uint8_t\000"
+ 1324      6E74385F 
+ 1324      7400
+ 1325              	.LASF33:
+ 1326 0012 53746172 		.ascii	"StartUpCounter\000"
+ 1326      74557043 
+ 1326      6F756E74 
+ 1326      657200
+ 1327              	.LASF22:
+ 1328 0021 43464752 		.ascii	"CFGR\000"
+ 1328      00
+ 1329              	.LASF38:
+ 1330 0026 706C6C73 		.ascii	"pllsource\000"
+ 1330      6F757263 
+ 1330      6500
+ 1331              	.LASF29:
+ 1332 0030 41484252 		.ascii	"AHBRSTR\000"
+ 1332      53545200 
+ 1333              	.LASF34:
+ 1334 0038 48534553 		.ascii	"HSEStatus\000"
+ 1334      74617475 
+ 1334      7300
+ 1335              	.LASF21:
+ 1336 0042 464C4153 		.ascii	"FLASH_TypeDef\000"
+ 1336      485F5479 
+ARM GAS  /tmp/ccBphW2A.s 			page 31
+
+
+ 1336      70654465 
+ 1336      6600
+ 1337              	.LASF25:
+ 1338 0050 41484245 		.ascii	"AHBENR\000"
+ 1338      4E5200
+ 1339              	.LASF2:
+ 1340 0057 73686F72 		.ascii	"short int\000"
+ 1340      7420696E 
+ 1340      7400
+ 1341              	.LASF20:
+ 1342 0061 57525052 		.ascii	"WRPR\000"
+ 1342      00
+ 1343              	.LASF30:
+ 1344 0066 43464752 		.ascii	"CFGR2\000"
+ 1344      3200
+ 1345              	.LASF26:
+ 1346 006c 41504232 		.ascii	"APB2ENR\000"
+ 1346      454E5200 
+ 1347              	.LASF41:
+ 1348 0074 41484250 		.ascii	"AHBPrescTable\000"
+ 1348      72657363 
+ 1348      5461626C 
+ 1348      6500
+ 1349              	.LASF8:
+ 1350 0082 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1350      20756E73 
+ 1350      69676E65 
+ 1350      6420696E 
+ 1350      7400
+ 1351              	.LASF31:
+ 1352 0094 43464752 		.ascii	"CFGR3\000"
+ 1352      3300
+ 1353              	.LASF5:
+ 1354 009a 73686F72 		.ascii	"short unsigned int\000"
+ 1354      7420756E 
+ 1354      7369676E 
+ 1354      65642069 
+ 1354      6E7400
+ 1355              	.LASF18:
+ 1356 00ad 4F50544B 		.ascii	"OPTKEYR\000"
+ 1356      45595200 
+ 1357              	.LASF1:
+ 1358 00b5 756E7369 		.ascii	"unsigned char\000"
+ 1358      676E6564 
+ 1358      20636861 
+ 1358      7200
+ 1359              	.LASF39:
+ 1360 00c3 70726564 		.ascii	"prediv1factor\000"
+ 1360      69763166 
+ 1360      6163746F 
+ 1360      7200
+ 1361              	.LASF19:
+ 1362 00d1 52455345 		.ascii	"RESERVED\000"
+ 1362      52564544 
+ 1362      00
+ 1363              	.LASF24:
+ 1364 00da 41504231 		.ascii	"APB1RSTR\000"
+ARM GAS  /tmp/ccBphW2A.s 			page 32
+
+
+ 1364      52535452 
+ 1364      00
+ 1365              	.LASF7:
+ 1366 00e3 5F5F7569 		.ascii	"__uint32_t\000"
+ 1366      6E743332 
+ 1366      5F7400
+ 1367              	.LASF44:
+ 1368 00ee 2F686F6D 		.ascii	"/home/banks/Projects/STM32F0/workspace/iotogglem0_w"
+ 1368      652F6261 
+ 1368      6E6B732F 
+ 1368      50726F6A 
+ 1368      65637473 
+ 1369 0121 73706C00 		.ascii	"spl\000"
+ 1370              	.LASF27:
+ 1371 0125 41504231 		.ascii	"APB1ENR\000"
+ 1371      454E5200 
+ 1372              	.LASF23:
+ 1373 012d 41504232 		.ascii	"APB2RSTR\000"
+ 1373      52535452 
+ 1373      00
+ 1374              	.LASF42:
+ 1375 0136 474E5520 		.ascii	"GNU C 4.8.4 20140725 (release) [ARM/embedded-4_8-br"
+ 1375      4320342E 
+ 1375      382E3420 
+ 1375      32303134 
+ 1375      30373235 
+ 1376 0169 616E6368 		.ascii	"anch revision 213147] -mcpu=cortex-m0 -mthumb -g -g"
+ 1376      20726576 
+ 1376      6973696F 
+ 1376      6E203231 
+ 1376      33313437 
+ 1377 019c 64776172 		.ascii	"dwarf-2 -Os -fomit-frame-pointer\000"
+ 1377      662D3220 
+ 1377      2D4F7320 
+ 1377      2D666F6D 
+ 1377      69742D66 
+ 1378              	.LASF11:
+ 1379 01bd 756E7369 		.ascii	"unsigned int\000"
+ 1379      676E6564 
+ 1379      20696E74 
+ 1379      00
+ 1380              	.LASF10:
+ 1381 01ca 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1381      206C6F6E 
+ 1381      6720756E 
+ 1381      7369676E 
+ 1381      65642069 
+ 1382              	.LASF12:
+ 1383 01e1 75696E74 		.ascii	"uint8_t\000"
+ 1383      385F7400 
+ 1384              	.LASF45:
+ 1385 01e9 53657453 		.ascii	"SetSysClock\000"
+ 1385      7973436C 
+ 1385      6F636B00 
+ 1386              	.LASF28:
+ 1387 01f5 42444352 		.ascii	"BDCR\000"
+ 1387      00
+ARM GAS  /tmp/ccBphW2A.s 			page 33
+
+
+ 1388              	.LASF35:
+ 1389 01fa 53797374 		.ascii	"SystemInit\000"
+ 1389      656D496E 
+ 1389      697400
+ 1390              	.LASF15:
+ 1391 0205 73697A65 		.ascii	"sizetype\000"
+ 1391      74797065 
+ 1391      00
+ 1392              	.LASF9:
+ 1393 020e 6C6F6E67 		.ascii	"long long int\000"
+ 1393      206C6F6E 
+ 1393      6720696E 
+ 1393      7400
+ 1394              	.LASF40:
+ 1395 021c 53797374 		.ascii	"SystemCoreClock\000"
+ 1395      656D436F 
+ 1395      7265436C 
+ 1395      6F636B00 
+ 1396              	.LASF36:
+ 1397 022c 53797374 		.ascii	"SystemCoreClockUpdate\000"
+ 1397      656D436F 
+ 1397      7265436C 
+ 1397      6F636B55 
+ 1397      70646174 
+ 1398              	.LASF43:
+ 1399 0242 2E2E2F2E 		.ascii	"../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/S"
+ 1399      2E2F5354 
+ 1399      4D333246 
+ 1399      302D4469 
+ 1399      73636F76 
+ 1400 0275 542F5354 		.ascii	"T/STM32F0xx/Source/Templates/system_stm32f0xx.c\000"
+ 1400      4D333246 
+ 1400      3078782F 
+ 1400      536F7572 
+ 1400      63652F54 
+ 1401              	.LASF4:
+ 1402 02a5 5F5F7569 		.ascii	"__uint16_t\000"
+ 1402      6E743136 
+ 1402      5F7400
+ 1403              	.LASF13:
+ 1404 02b0 75696E74 		.ascii	"uint16_t\000"
+ 1404      31365F74 
+ 1404      00
+ 1405              	.LASF32:
+ 1406 02b9 5243435F 		.ascii	"RCC_TypeDef\000"
+ 1406      54797065 
+ 1406      44656600 
+ 1407              	.LASF14:
+ 1408 02c5 75696E74 		.ascii	"uint32_t\000"
+ 1408      33325F74 
+ 1408      00
+ 1409              	.LASF6:
+ 1410 02ce 6C6F6E67 		.ascii	"long int\000"
+ 1410      20696E74 
+ 1410      00
+ 1411              	.LASF17:
+ 1412 02d7 4B455952 		.ascii	"KEYR\000"
+ARM GAS  /tmp/ccBphW2A.s 			page 34
+
+
+ 1412      00
+ 1413              	.LASF0:
+ 1414 02dc 7369676E 		.ascii	"signed char\000"
+ 1414      65642063 
+ 1414      68617200 
+ 1415              	.LASF16:
+ 1416 02e8 52455345 		.ascii	"RESET\000"
+ 1416      5400
+ 1417              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140725 (release) [ARM/embedded-4_8-br
+ARM GAS  /tmp/ccBphW2A.s 			page 35
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 system_stm32f0xx.c
+     /tmp/ccBphW2A.s:70     .text:0000000000000000 $t
+     /tmp/ccBphW2A.s:75     .text:0000000000000000 SystemInit
+     /tmp/ccBphW2A.s:239    .text:00000000000000d0 $d
+     /tmp/ccBphW2A.s:250    .text:00000000000000ec $t
+     /tmp/ccBphW2A.s:255    .text:00000000000000ec SystemCoreClockUpdate
+     /tmp/ccBphW2A.s:352    .text:0000000000000140 $d
+     /tmp/ccBphW2A.s:370    .data:0000000000000004 AHBPrescTable
+     /tmp/ccBphW2A.s:366    .data:0000000000000000 SystemCoreClock
+     /tmp/ccBphW2A.s:362    .data:0000000000000000 $d
+                     .debug_frame:0000000000000010 $d
+
+UNDEFINED SYMBOLS
+__aeabi_uidiv

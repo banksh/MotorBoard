@@ -27,6 +27,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f0xx.h"
+#include "timer.h"
 
 /** @addtogroup STM32F0_Discovery_Peripheral_Examples
   * @{
@@ -54,6 +55,8 @@ void delay (int a);
   */
 int main(void)
 {
+    TIM_Config();
+    PWM_Config();
   /*!< At this stage the microcontroller clock setting is already configured, 
        this is done through SystemInit() function which is called from startup
        file (startup_stm32f0xx.s) before to branch to application main.
@@ -62,15 +65,15 @@ int main(void)
      */
 
   /* GPIOC Periph clock enable */
-  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
+  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 
   /* Configure PC8 and PC9 in output pushpull mode */
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9;
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
   GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
-  GPIO_Init(GPIOC, &GPIO_InitStructure);
+  GPIO_Init(GPIOA, &GPIO_InitStructure);
 
   /* To achieve GPIO toggling maximum frequency, the following  sequence is mandatory. 
      You can monitor PC8 and PC9 on the scope to measure the output signal. 
@@ -80,10 +83,10 @@ int main(void)
   while (1)
   {
     /* Set PC8 and PC9 */
-    GPIOC->BSRR = BSRR_VAL;
+    GPIO_SetBits(GPIOA, GPIO_Pin_0);
 	delay(500000);
 	/* Reset PC8 and PC9 */
-    GPIOC->BRR = BSRR_VAL;
+    GPIO_ResetBits(GPIOA, GPIO_Pin_0);
 	delay(500000);
    
 

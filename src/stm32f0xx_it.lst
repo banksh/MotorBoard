@@ -1,0 +1,593 @@
+ARM GAS  /tmp/ccPOJdKy.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1	@ Tag_ABI_FP_denormal
+   4              		.eabi_attribute 21, 1	@ Tag_ABI_FP_exceptions
+   5              		.eabi_attribute 23, 3	@ Tag_ABI_FP_number_model
+   6              		.eabi_attribute 24, 1	@ Tag_ABI_align8_needed
+   7              		.eabi_attribute 25, 1	@ Tag_ABI_align8_preserved
+   8              		.eabi_attribute 26, 1	@ Tag_ABI_enum_size
+   9              		.eabi_attribute 30, 4	@ Tag_ABI_optimization_goals
+  10              		.eabi_attribute 34, 0	@ Tag_CPU_unaligned_access
+  11              		.eabi_attribute 18, 4	@ Tag_ABI_PCS_wchar_t
+  12              		.file	"stm32f0xx_it.c"
+  13              	@ GNU C (GNU Tools for ARM Embedded Processors) version 4.8.4 20140725 (release) [ARM/embedded-4_8-
+  14              	@	compiled by GNU C version 4.6.3, GMP version 5.0.2, MPFR version 3.1.0-p3, MPC version 0.9
+  15              	@ warning: GMP header version 5.0.2 differs from library version 5.1.3.
+  16              	@ warning: MPFR header version 3.1.0-p3 differs from library version 3.1.2-p3.
+  17              	@ GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+  18              	@ options passed:  -I .
+  19              	@ -I ../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/ST/STM32F0xx/Include
+  20              	@ -I ../../STM32F0-Discovery_FW_V1.0.0/Libraries/CMSIS/Include
+  21              	@ -I ../../STM32F0-Discovery_FW_V1.0.0/Libraries/STM32F0xx_StdPeriph_Driver/inc
+  22              	@ -I ../../STM32F0-Discovery_FW_V1.0.0/Utilities/STM32F0-Discovery -I ./inc
+  23              	@ -imultilib armv6-m -iprefix /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/
+  24              	@ -isysroot /usr/bin/../arm-none-eabi -D__USES_INITFINI__ -D STM32F0XX
+  25              	@ -D USE_STDPERIPH_DRIVER -D RUN_FROM_FLASH=1 src/stm32f0xx_it.c
+  26              	@ -mcpu=cortex-m0 -mthumb -auxbase-strip src/stm32f0xx_it.o -g -gdwarf-2
+  27              	@ -Os -Wall -Wstrict-prototypes -fomit-frame-pointer -fverbose-asm
+  28              	@ options enabled:  -faggressive-loop-optimizations -fauto-inc-dec
+  29              	@ -fbranch-count-reg -fcaller-saves -fcombine-stack-adjustments -fcommon
+  30              	@ -fcompare-elim -fcprop-registers -fcrossjumping -fcse-follow-jumps
+  31              	@ -fdefer-pop -fdelete-null-pointer-checks -fdevirtualize -fdwarf2-cfi-asm
+  32              	@ -fearly-inlining -feliminate-unused-debug-types -fexpensive-optimizations
+  33              	@ -fforward-propagate -ffunction-cse -fgcse -fgcse-lm -fgnu-runtime
+  34              	@ -fgnu-unique -fguess-branch-probability -fhoist-adjacent-loads -fident
+  35              	@ -fif-conversion -fif-conversion2 -findirect-inlining -finline
+  36              	@ -finline-atomics -finline-functions -finline-functions-called-once
+  37              	@ -finline-small-functions -fipa-cp -fipa-profile -fipa-pure-const
+  38              	@ -fipa-reference -fipa-sra -fira-hoist-pressure -fira-share-save-slots
+  39              	@ -fira-share-spill-slots -fivopts -fkeep-static-consts
+  40              	@ -fleading-underscore -fmath-errno -fmerge-constants -fmerge-debug-strings
+  41              	@ -fomit-frame-pointer -foptimize-register-move -foptimize-sibling-calls
+  42              	@ -fpartial-inlining -fpeephole -fpeephole2 -fprefetch-loop-arrays
+  43              	@ -freg-struct-return -fregmove -freorder-blocks -freorder-functions
+  44              	@ -frerun-cse-after-loop -fsched-critical-path-heuristic
+  45              	@ -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock
+  46              	@ -fsched-last-insn-heuristic -fsched-pressure -fsched-rank-heuristic
+  47              	@ -fsched-spec -fsched-spec-insn-heuristic -fsched-stalled-insns-dep
+  48              	@ -fschedule-insns2 -fsection-anchors -fshow-column -fshrink-wrap
+  49              	@ -fsigned-zeros -fsplit-ivs-in-unroller -fsplit-wide-types
+  50              	@ -fstrict-aliasing -fstrict-overflow -fstrict-volatile-bitfields
+  51              	@ -fsync-libcalls -fthread-jumps -ftoplevel-reorder -ftrapping-math
+  52              	@ -ftree-bit-ccp -ftree-builtin-call-dce -ftree-ccp -ftree-ch
+  53              	@ -ftree-coalesce-vars -ftree-copy-prop -ftree-copyrename -ftree-cselim
+  54              	@ -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+  55              	@ -ftree-loop-if-convert -ftree-loop-im -ftree-loop-ivcanon
+  56              	@ -ftree-loop-optimize -ftree-parallelize-loops= -ftree-phiprop -ftree-pre
+  57              	@ -ftree-pta -ftree-reassoc -ftree-scev-cprop -ftree-sink
+ARM GAS  /tmp/ccPOJdKy.s 			page 2
+
+
+  58              	@ -ftree-slp-vectorize -ftree-slsr -ftree-sra -ftree-switch-conversion
+  59              	@ -ftree-tail-merge -ftree-ter -ftree-vect-loop-version -ftree-vrp
+  60              	@ -funit-at-a-time -fvar-tracking -fvar-tracking-assignments -fverbose-asm
+  61              	@ -fzero-initialized-in-bss -mlittle-endian -mpic-data-is-text-relative
+  62              	@ -msched-prolog -mthumb -mvectorize-with-neon-quad
+  63              	
+  64              		.text
+  65              	.Ltext0:
+  66              		.cfi_sections	.debug_frame
+  67              		.align	1
+  68              		.global	NMI_Handler
+  69              		.code	16
+  70              		.thumb_func
+  71              		.type	NMI_Handler, %function
+  72              	NMI_Handler:
+  73              	.LFB32:
+  74              		.file 1 "src/stm32f0xx_it.c"
+   1:src/stm32f0xx_it.c **** /**
+   2:src/stm32f0xx_it.c ****   ******************************************************************************
+   3:src/stm32f0xx_it.c ****   * @file    IO_Toggle/stm32f0xx_it.c 
+   4:src/stm32f0xx_it.c ****   * @author  MCD Application Team
+   5:src/stm32f0xx_it.c ****   * @version V1.0.0
+   6:src/stm32f0xx_it.c ****   * @date    23-March-2012
+   7:src/stm32f0xx_it.c ****   * @brief   Main Interrupt Service Routines.
+   8:src/stm32f0xx_it.c ****   *          This file provides template for all exceptions handler and 
+   9:src/stm32f0xx_it.c ****   *          peripherals interrupt service routine.
+  10:src/stm32f0xx_it.c ****   ******************************************************************************
+  11:src/stm32f0xx_it.c ****   * @attention
+  12:src/stm32f0xx_it.c ****   *
+  13:src/stm32f0xx_it.c ****   * <h2><center>&copy; COPYRIGHT 2012 STMicroelectronics</center></h2>
+  14:src/stm32f0xx_it.c ****   *
+  15:src/stm32f0xx_it.c ****   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+  16:src/stm32f0xx_it.c ****   * You may not use this file except in compliance with the License.
+  17:src/stm32f0xx_it.c ****   * You may obtain a copy of the License at:
+  18:src/stm32f0xx_it.c ****   *
+  19:src/stm32f0xx_it.c ****   *        http://www.st.com/software_license_agreement_liberty_v2
+  20:src/stm32f0xx_it.c ****   *
+  21:src/stm32f0xx_it.c ****   * Unless required by applicable law or agreed to in writing, software 
+  22:src/stm32f0xx_it.c ****   * distributed under the License is distributed on an "AS IS" BASIS, 
+  23:src/stm32f0xx_it.c ****   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  24:src/stm32f0xx_it.c ****   * See the License for the specific language governing permissions and
+  25:src/stm32f0xx_it.c ****   * limitations under the License.
+  26:src/stm32f0xx_it.c ****   *
+  27:src/stm32f0xx_it.c ****   ******************************************************************************
+  28:src/stm32f0xx_it.c ****   */
+  29:src/stm32f0xx_it.c **** 
+  30:src/stm32f0xx_it.c **** /* Includes ------------------------------------------------------------------*/
+  31:src/stm32f0xx_it.c **** #include "stm32f0xx_it.h"
+  32:src/stm32f0xx_it.c **** 
+  33:src/stm32f0xx_it.c **** /** @addtogroup STM32F0_Discovery_Peripheral_Examples
+  34:src/stm32f0xx_it.c ****   * @{
+  35:src/stm32f0xx_it.c ****   */
+  36:src/stm32f0xx_it.c **** 
+  37:src/stm32f0xx_it.c **** /** @addtogroup IO_Toggle
+  38:src/stm32f0xx_it.c ****   * @{
+  39:src/stm32f0xx_it.c ****   */
+  40:src/stm32f0xx_it.c **** 
+ARM GAS  /tmp/ccPOJdKy.s 			page 3
+
+
+  41:src/stm32f0xx_it.c **** /* Private typedef -----------------------------------------------------------*/
+  42:src/stm32f0xx_it.c **** /* Private define ------------------------------------------------------------*/
+  43:src/stm32f0xx_it.c **** /* Private macro -------------------------------------------------------------*/
+  44:src/stm32f0xx_it.c **** /* Private variables ---------------------------------------------------------*/
+  45:src/stm32f0xx_it.c **** /* Private function prototypes -----------------------------------------------*/
+  46:src/stm32f0xx_it.c **** /* Private functions ---------------------------------------------------------*/
+  47:src/stm32f0xx_it.c **** 
+  48:src/stm32f0xx_it.c **** /******************************************************************************/
+  49:src/stm32f0xx_it.c **** /*            Cortex-M0 Processor Exceptions Handlers                         */
+  50:src/stm32f0xx_it.c **** /******************************************************************************/
+  51:src/stm32f0xx_it.c **** 
+  52:src/stm32f0xx_it.c **** /**
+  53:src/stm32f0xx_it.c ****   * @brief  This function handles NMI exception.
+  54:src/stm32f0xx_it.c ****   * @param  None
+  55:src/stm32f0xx_it.c ****   * @retval None
+  56:src/stm32f0xx_it.c ****   */
+  57:src/stm32f0xx_it.c **** void NMI_Handler(void)
+  58:src/stm32f0xx_it.c **** {
+  75              		.loc 1 58 0
+  76              		.cfi_startproc
+  59:src/stm32f0xx_it.c **** }
+  77              		.loc 1 59 0
+  78              		@ sp needed	@
+  79 0000 7047     		bx	lr
+  80              		.cfi_endproc
+  81              	.LFE32:
+  82              		.size	NMI_Handler, .-NMI_Handler
+  83              		.align	1
+  84              		.global	HardFault_Handler
+  85              		.code	16
+  86              		.thumb_func
+  87              		.type	HardFault_Handler, %function
+  88              	HardFault_Handler:
+  89              	.LFB33:
+  60:src/stm32f0xx_it.c **** 
+  61:src/stm32f0xx_it.c **** /**
+  62:src/stm32f0xx_it.c ****   * @brief  This function handles Hard Fault exception.
+  63:src/stm32f0xx_it.c ****   * @param  None
+  64:src/stm32f0xx_it.c ****   * @retval None
+  65:src/stm32f0xx_it.c ****   */
+  66:src/stm32f0xx_it.c **** void HardFault_Handler(void)
+  67:src/stm32f0xx_it.c **** {
+  90              		.loc 1 67 0
+  91              		.cfi_startproc
+  92              	.L3:
+  93 0002 FEE7     		b	.L3	@
+  94              		.cfi_endproc
+  95              	.LFE33:
+  96              		.size	HardFault_Handler, .-HardFault_Handler
+  97              		.align	1
+  98              		.global	SVC_Handler
+  99              		.code	16
+ 100              		.thumb_func
+ 101              		.type	SVC_Handler, %function
+ 102              	SVC_Handler:
+ 103              	.LFB34:
+  68:src/stm32f0xx_it.c ****   /* Go to infinite loop when Hard Fault exception occurs */
+ARM GAS  /tmp/ccPOJdKy.s 			page 4
+
+
+  69:src/stm32f0xx_it.c ****   while (1)
+  70:src/stm32f0xx_it.c ****   {
+  71:src/stm32f0xx_it.c ****   }
+  72:src/stm32f0xx_it.c **** }
+  73:src/stm32f0xx_it.c **** 
+  74:src/stm32f0xx_it.c **** /**
+  75:src/stm32f0xx_it.c ****   * @brief  This function handles SVCall exception.
+  76:src/stm32f0xx_it.c ****   * @param  None
+  77:src/stm32f0xx_it.c ****   * @retval None
+  78:src/stm32f0xx_it.c ****   */
+  79:src/stm32f0xx_it.c **** void SVC_Handler(void)
+  80:src/stm32f0xx_it.c **** {
+ 104              		.loc 1 80 0
+ 105              		.cfi_startproc
+  81:src/stm32f0xx_it.c **** }
+ 106              		.loc 1 81 0
+ 107              		@ sp needed	@
+ 108 0004 7047     		bx	lr
+ 109              		.cfi_endproc
+ 110              	.LFE34:
+ 111              		.size	SVC_Handler, .-SVC_Handler
+ 112              		.align	1
+ 113              		.global	PendSV_Handler
+ 114              		.code	16
+ 115              		.thumb_func
+ 116              		.type	PendSV_Handler, %function
+ 117              	PendSV_Handler:
+ 118              	.LFB35:
+  82:src/stm32f0xx_it.c **** 
+  83:src/stm32f0xx_it.c **** /**
+  84:src/stm32f0xx_it.c ****   * @brief  This function handles PendSVC exception.
+  85:src/stm32f0xx_it.c ****   * @param  None
+  86:src/stm32f0xx_it.c ****   * @retval None
+  87:src/stm32f0xx_it.c ****   */
+  88:src/stm32f0xx_it.c **** void PendSV_Handler(void)
+  89:src/stm32f0xx_it.c **** {
+ 119              		.loc 1 89 0
+ 120              		.cfi_startproc
+  90:src/stm32f0xx_it.c **** }
+ 121              		.loc 1 90 0
+ 122              		@ sp needed	@
+ 123 0006 7047     		bx	lr
+ 124              		.cfi_endproc
+ 125              	.LFE35:
+ 126              		.size	PendSV_Handler, .-PendSV_Handler
+ 127              		.align	1
+ 128              		.global	SysTick_Handler
+ 129              		.code	16
+ 130              		.thumb_func
+ 131              		.type	SysTick_Handler, %function
+ 132              	SysTick_Handler:
+ 133              	.LFB36:
+  91:src/stm32f0xx_it.c **** 
+  92:src/stm32f0xx_it.c **** /**
+  93:src/stm32f0xx_it.c ****   * @brief  This function handles SysTick Handler.
+  94:src/stm32f0xx_it.c ****   * @param  None
+  95:src/stm32f0xx_it.c ****   * @retval None
+ARM GAS  /tmp/ccPOJdKy.s 			page 5
+
+
+  96:src/stm32f0xx_it.c ****   */
+  97:src/stm32f0xx_it.c **** void SysTick_Handler(void)
+  98:src/stm32f0xx_it.c **** {
+ 134              		.loc 1 98 0
+ 135              		.cfi_startproc
+  99:src/stm32f0xx_it.c **** }
+ 136              		.loc 1 99 0
+ 137              		@ sp needed	@
+ 138 0008 7047     		bx	lr
+ 139              		.cfi_endproc
+ 140              	.LFE36:
+ 141              		.size	SysTick_Handler, .-SysTick_Handler
+ 142              	.Letext0:
+ 143              		.section	.debug_info,"",%progbits
+ 144              	.Ldebug_info0:
+ 145 0000 D8000000 		.4byte	0xd8
+ 146 0004 0200     		.2byte	0x2
+ 147 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 148 000a 04       		.byte	0x4
+ 149 000b 01       		.uleb128 0x1
+ 150 000c 2E000000 		.4byte	.LASF15
+ 151 0010 01       		.byte	0x1
+ 152 0011 0E000000 		.4byte	.LASF16
+ 153 0015 32010000 		.4byte	.LASF17
+ 154 0019 00000000 		.4byte	.Ltext0
+ 155 001d 0A000000 		.4byte	.Letext0
+ 156 0021 00000000 		.4byte	.Ldebug_line0
+ 157 0025 02       		.uleb128 0x2
+ 158 0026 01       		.byte	0x1
+ 159 0027 06       		.byte	0x6
+ 160 0028 7C010000 		.4byte	.LASF0
+ 161 002c 02       		.uleb128 0x2
+ 162 002d 01       		.byte	0x1
+ 163 002e 08       		.byte	0x8
+ 164 002f B5000000 		.4byte	.LASF1
+ 165 0033 02       		.uleb128 0x2
+ 166 0034 02       		.byte	0x2
+ 167 0035 05       		.byte	0x5
+ 168 0036 94010000 		.4byte	.LASF2
+ 169 003a 02       		.uleb128 0x2
+ 170 003b 02       		.byte	0x2
+ 171 003c 07       		.byte	0x7
+ 172 003d 69010000 		.4byte	.LASF3
+ 173 0041 02       		.uleb128 0x2
+ 174 0042 04       		.byte	0x4
+ 175 0043 05       		.byte	0x5
+ 176 0044 29010000 		.4byte	.LASF4
+ 177 0048 02       		.uleb128 0x2
+ 178 0049 04       		.byte	0x4
+ 179 004a 07       		.byte	0x7
+ 180 004b C3000000 		.4byte	.LASF5
+ 181 004f 02       		.uleb128 0x2
+ 182 0050 08       		.byte	0x8
+ 183 0051 05       		.byte	0x5
+ 184 0052 00000000 		.4byte	.LASF6
+ 185 0056 02       		.uleb128 0x2
+ 186 0057 08       		.byte	0x8
+ARM GAS  /tmp/ccPOJdKy.s 			page 6
+
+
+ 187 0058 07       		.byte	0x7
+ 188 0059 D5000000 		.4byte	.LASF7
+ 189 005d 03       		.uleb128 0x3
+ 190 005e 04       		.byte	0x4
+ 191 005f 05       		.byte	0x5
+ 192 0060 696E7400 		.ascii	"int\000"
+ 193 0064 02       		.uleb128 0x2
+ 194 0065 04       		.byte	0x4
+ 195 0066 07       		.byte	0x7
+ 196 0067 21000000 		.4byte	.LASF8
+ 197 006b 02       		.uleb128 0x2
+ 198 006c 04       		.byte	0x4
+ 199 006d 07       		.byte	0x7
+ 200 006e 9E010000 		.4byte	.LASF9
+ 201 0072 04       		.uleb128 0x4
+ 202 0073 01       		.byte	0x1
+ 203 0074 FE000000 		.4byte	.LASF10
+ 204 0078 01       		.byte	0x1
+ 205 0079 39       		.byte	0x39
+ 206 007a 01       		.byte	0x1
+ 207 007b 00000000 		.4byte	.LFB32
+ 208 007f 02000000 		.4byte	.LFE32
+ 209 0083 02       		.byte	0x2
+ 210 0084 7D       		.byte	0x7d
+ 211 0085 00       		.sleb128 0
+ 212 0086 01       		.byte	0x1
+ 213 0087 04       		.uleb128 0x4
+ 214 0088 01       		.byte	0x1
+ 215 0089 EC000000 		.4byte	.LASF11
+ 216 008d 01       		.byte	0x1
+ 217 008e 42       		.byte	0x42
+ 218 008f 01       		.byte	0x1
+ 219 0090 02000000 		.4byte	.LFB33
+ 220 0094 04000000 		.4byte	.LFE33
+ 221 0098 02       		.byte	0x2
+ 222 0099 7D       		.byte	0x7d
+ 223 009a 00       		.sleb128 0
+ 224 009b 01       		.byte	0x1
+ 225 009c 04       		.uleb128 0x4
+ 226 009d 01       		.byte	0x1
+ 227 009e 88010000 		.4byte	.LASF12
+ 228 00a2 01       		.byte	0x1
+ 229 00a3 4F       		.byte	0x4f
+ 230 00a4 01       		.byte	0x1
+ 231 00a5 04000000 		.4byte	.LFB34
+ 232 00a9 06000000 		.4byte	.LFE34
+ 233 00ad 02       		.byte	0x2
+ 234 00ae 7D       		.byte	0x7d
+ 235 00af 00       		.sleb128 0
+ 236 00b0 01       		.byte	0x1
+ 237 00b1 04       		.uleb128 0x4
+ 238 00b2 01       		.byte	0x1
+ 239 00b3 0A010000 		.4byte	.LASF13
+ 240 00b7 01       		.byte	0x1
+ 241 00b8 58       		.byte	0x58
+ 242 00b9 01       		.byte	0x1
+ 243 00ba 06000000 		.4byte	.LFB35
+ARM GAS  /tmp/ccPOJdKy.s 			page 7
+
+
+ 244 00be 08000000 		.4byte	.LFE35
+ 245 00c2 02       		.byte	0x2
+ 246 00c3 7D       		.byte	0x7d
+ 247 00c4 00       		.sleb128 0
+ 248 00c5 01       		.byte	0x1
+ 249 00c6 04       		.uleb128 0x4
+ 250 00c7 01       		.byte	0x1
+ 251 00c8 19010000 		.4byte	.LASF14
+ 252 00cc 01       		.byte	0x1
+ 253 00cd 61       		.byte	0x61
+ 254 00ce 01       		.byte	0x1
+ 255 00cf 08000000 		.4byte	.LFB36
+ 256 00d3 0A000000 		.4byte	.LFE36
+ 257 00d7 02       		.byte	0x2
+ 258 00d8 7D       		.byte	0x7d
+ 259 00d9 00       		.sleb128 0
+ 260 00da 01       		.byte	0x1
+ 261 00db 00       		.byte	0
+ 262              		.section	.debug_abbrev,"",%progbits
+ 263              	.Ldebug_abbrev0:
+ 264 0000 01       		.uleb128 0x1
+ 265 0001 11       		.uleb128 0x11
+ 266 0002 01       		.byte	0x1
+ 267 0003 25       		.uleb128 0x25
+ 268 0004 0E       		.uleb128 0xe
+ 269 0005 13       		.uleb128 0x13
+ 270 0006 0B       		.uleb128 0xb
+ 271 0007 03       		.uleb128 0x3
+ 272 0008 0E       		.uleb128 0xe
+ 273 0009 1B       		.uleb128 0x1b
+ 274 000a 0E       		.uleb128 0xe
+ 275 000b 11       		.uleb128 0x11
+ 276 000c 01       		.uleb128 0x1
+ 277 000d 12       		.uleb128 0x12
+ 278 000e 01       		.uleb128 0x1
+ 279 000f 10       		.uleb128 0x10
+ 280 0010 06       		.uleb128 0x6
+ 281 0011 00       		.byte	0
+ 282 0012 00       		.byte	0
+ 283 0013 02       		.uleb128 0x2
+ 284 0014 24       		.uleb128 0x24
+ 285 0015 00       		.byte	0
+ 286 0016 0B       		.uleb128 0xb
+ 287 0017 0B       		.uleb128 0xb
+ 288 0018 3E       		.uleb128 0x3e
+ 289 0019 0B       		.uleb128 0xb
+ 290 001a 03       		.uleb128 0x3
+ 291 001b 0E       		.uleb128 0xe
+ 292 001c 00       		.byte	0
+ 293 001d 00       		.byte	0
+ 294 001e 03       		.uleb128 0x3
+ 295 001f 24       		.uleb128 0x24
+ 296 0020 00       		.byte	0
+ 297 0021 0B       		.uleb128 0xb
+ 298 0022 0B       		.uleb128 0xb
+ 299 0023 3E       		.uleb128 0x3e
+ 300 0024 0B       		.uleb128 0xb
+ARM GAS  /tmp/ccPOJdKy.s 			page 8
+
+
+ 301 0025 03       		.uleb128 0x3
+ 302 0026 08       		.uleb128 0x8
+ 303 0027 00       		.byte	0
+ 304 0028 00       		.byte	0
+ 305 0029 04       		.uleb128 0x4
+ 306 002a 2E       		.uleb128 0x2e
+ 307 002b 00       		.byte	0
+ 308 002c 3F       		.uleb128 0x3f
+ 309 002d 0C       		.uleb128 0xc
+ 310 002e 03       		.uleb128 0x3
+ 311 002f 0E       		.uleb128 0xe
+ 312 0030 3A       		.uleb128 0x3a
+ 313 0031 0B       		.uleb128 0xb
+ 314 0032 3B       		.uleb128 0x3b
+ 315 0033 0B       		.uleb128 0xb
+ 316 0034 27       		.uleb128 0x27
+ 317 0035 0C       		.uleb128 0xc
+ 318 0036 11       		.uleb128 0x11
+ 319 0037 01       		.uleb128 0x1
+ 320 0038 12       		.uleb128 0x12
+ 321 0039 01       		.uleb128 0x1
+ 322 003a 40       		.uleb128 0x40
+ 323 003b 0A       		.uleb128 0xa
+ 324 003c 9742     		.uleb128 0x2117
+ 325 003e 0C       		.uleb128 0xc
+ 326 003f 00       		.byte	0
+ 327 0040 00       		.byte	0
+ 328 0041 00       		.byte	0
+ 329              		.section	.debug_aranges,"",%progbits
+ 330 0000 1C000000 		.4byte	0x1c
+ 331 0004 0200     		.2byte	0x2
+ 332 0006 00000000 		.4byte	.Ldebug_info0
+ 333 000a 04       		.byte	0x4
+ 334 000b 00       		.byte	0
+ 335 000c 0000     		.2byte	0
+ 336 000e 0000     		.2byte	0
+ 337 0010 00000000 		.4byte	.Ltext0
+ 338 0014 0A000000 		.4byte	.Letext0-.Ltext0
+ 339 0018 00000000 		.4byte	0
+ 340 001c 00000000 		.4byte	0
+ 341              		.section	.debug_line,"",%progbits
+ 342              	.Ldebug_line0:
+ 343 0000 48000000 		.section	.debug_str,"MS",%progbits,1
+ 343      02002900 
+ 343      00000201 
+ 343      FB0E0D00 
+ 343      01010101 
+ 344              	.LASF6:
+ 345 0000 6C6F6E67 		.ascii	"long long int\000"
+ 345      206C6F6E 
+ 345      6720696E 
+ 345      7400
+ 346              	.LASF16:
+ 347 000e 7372632F 		.ascii	"src/stm32f0xx_it.c\000"
+ 347      73746D33 
+ 347      32663078 
+ 347      785F6974 
+ARM GAS  /tmp/ccPOJdKy.s 			page 9
+
+
+ 347      2E6300
+ 348              	.LASF8:
+ 349 0021 756E7369 		.ascii	"unsigned int\000"
+ 349      676E6564 
+ 349      20696E74 
+ 349      00
+ 350              	.LASF15:
+ 351 002e 474E5520 		.ascii	"GNU C 4.8.4 20140725 (release) [ARM/embedded-4_8-br"
+ 351      4320342E 
+ 351      382E3420 
+ 351      32303134 
+ 351      30373235 
+ 352 0061 616E6368 		.ascii	"anch revision 213147] -mcpu=cortex-m0 -mthumb -g -g"
+ 352      20726576 
+ 352      6973696F 
+ 352      6E203231 
+ 352      33313437 
+ 353 0094 64776172 		.ascii	"dwarf-2 -Os -fomit-frame-pointer\000"
+ 353      662D3220 
+ 353      2D4F7320 
+ 353      2D666F6D 
+ 353      69742D66 
+ 354              	.LASF1:
+ 355 00b5 756E7369 		.ascii	"unsigned char\000"
+ 355      676E6564 
+ 355      20636861 
+ 355      7200
+ 356              	.LASF5:
+ 357 00c3 6C6F6E67 		.ascii	"long unsigned int\000"
+ 357      20756E73 
+ 357      69676E65 
+ 357      6420696E 
+ 357      7400
+ 358              	.LASF7:
+ 359 00d5 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 359      206C6F6E 
+ 359      6720756E 
+ 359      7369676E 
+ 359      65642069 
+ 360              	.LASF11:
+ 361 00ec 48617264 		.ascii	"HardFault_Handler\000"
+ 361      4661756C 
+ 361      745F4861 
+ 361      6E646C65 
+ 361      7200
+ 362              	.LASF10:
+ 363 00fe 4E4D495F 		.ascii	"NMI_Handler\000"
+ 363      48616E64 
+ 363      6C657200 
+ 364              	.LASF13:
+ 365 010a 50656E64 		.ascii	"PendSV_Handler\000"
+ 365      53565F48 
+ 365      616E646C 
+ 365      657200
+ 366              	.LASF14:
+ 367 0119 53797354 		.ascii	"SysTick_Handler\000"
+ 367      69636B5F 
+ARM GAS  /tmp/ccPOJdKy.s 			page 10
+
+
+ 367      48616E64 
+ 367      6C657200 
+ 368              	.LASF4:
+ 369 0129 6C6F6E67 		.ascii	"long int\000"
+ 369      20696E74 
+ 369      00
+ 370              	.LASF17:
+ 371 0132 2F686F6D 		.ascii	"/home/banks/Projects/STM32F0/workspace/iotogglem0_w"
+ 371      652F6261 
+ 371      6E6B732F 
+ 371      50726F6A 
+ 371      65637473 
+ 372 0165 73706C00 		.ascii	"spl\000"
+ 373              	.LASF3:
+ 374 0169 73686F72 		.ascii	"short unsigned int\000"
+ 374      7420756E 
+ 374      7369676E 
+ 374      65642069 
+ 374      6E7400
+ 375              	.LASF0:
+ 376 017c 7369676E 		.ascii	"signed char\000"
+ 376      65642063 
+ 376      68617200 
+ 377              	.LASF12:
+ 378 0188 5356435F 		.ascii	"SVC_Handler\000"
+ 378      48616E64 
+ 378      6C657200 
+ 379              	.LASF2:
+ 380 0194 73686F72 		.ascii	"short int\000"
+ 380      7420696E 
+ 380      7400
+ 381              	.LASF9:
+ 382 019e 73697A65 		.ascii	"sizetype\000"
+ 382      74797065 
+ 382      00
+ 383              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140725 (release) [ARM/embedded-4_8-br
+ARM GAS  /tmp/ccPOJdKy.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f0xx_it.c
+     /tmp/ccPOJdKy.s:67     .text:0000000000000000 $t
+     /tmp/ccPOJdKy.s:72     .text:0000000000000000 NMI_Handler
+     /tmp/ccPOJdKy.s:88     .text:0000000000000002 HardFault_Handler
+     /tmp/ccPOJdKy.s:102    .text:0000000000000004 SVC_Handler
+     /tmp/ccPOJdKy.s:117    .text:0000000000000006 PendSV_Handler
+     /tmp/ccPOJdKy.s:132    .text:0000000000000008 SysTick_Handler
+                     .debug_frame:0000000000000010 $d
+
+NO UNDEFINED SYMBOLS
